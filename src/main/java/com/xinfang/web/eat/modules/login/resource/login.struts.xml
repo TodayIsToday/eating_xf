@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+	<package name="login" extends="staff" namespace="/security">
+
+		<default-class-ref
+			class="com.wondersgroup.xinfang.web.staff.modules.login.action.LoginAction" />
+
+		<!-- Login 初期画面 -->
+		<action name="login" method="login">
+			<result name="success" type="tiles">staff.login</result>
+			<result name="input" type="tiles">staff.login</result>
+			<result name="redirect-to-top" type="redirectAction">
+				<param name="namespace">/top</param>
+				<param name="actionName">home</param>
+			</result>
+		</action>
+
+		<action name="logout" method="logout">
+			<result name="success" type="redirectAction">
+				<param name="namespace">/security</param>
+				<param name="actionName">login</param>
+			</result>
+		</action>
+
+		<!-- 插件下载页面 -->
+		<action name="fileDownLoad" method="fileDownLoad">
+			<result name="success" type="tiles">staff.fileDwonLoad</result>
+		</action>
+
+		<!-- 下载文件 -->
+		<action name="loginDownload" method="loginDownload">
+			<result name="success" type="stream">
+				<param name="contentType">application/octet-stream; charset=UTF-8</param>
+				<param name="inputName">fileInputStream</param>
+				<param name="contentDisposition">attachment;fileName="${originFilename}"</param>
+				<param name="contentCharSet">UTF-8</param>
+				<!-- 指定下载文件的缓冲大小 -->
+				<param name="bufferSize">102400</param>
+			</result>
+		</action>
+
+	</package>
+</struts>
