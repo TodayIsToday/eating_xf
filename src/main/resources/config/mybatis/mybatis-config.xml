@@ -8,12 +8,6 @@
     <setting name="jdbcTypeForNull" value="NULL" />
   </settings>
 
-  <typeAliases>
-    <package name="com.wondersgroup.xinfang.web.staff.beans" />
-    <package name="com.wondersgroup.xinfang.beans"/>
-  </typeAliases>
-
-
   <mappers/>
 
 </configuration>

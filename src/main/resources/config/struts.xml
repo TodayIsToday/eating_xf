@@ -27,8 +27,8 @@
 		/> <include file="config/struts2/struts-webapp.xml" /> -->
 	<!-- wildcard load struts.xml is incompatiblity -->
 	<include file="com/xinfang/web/eat/modules/*/resource/*.struts.xml" />
-
-
+	
+	<!-- <include file="com/xinfang/web/eat/modules/login/resource/login.struts.xml" /> -->
 
 </struts>
 

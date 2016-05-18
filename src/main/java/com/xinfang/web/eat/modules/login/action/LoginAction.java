@@ -1,6 +1,9 @@
 package com.xinfang.web.eat.modules.login.action;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.xinfang.web.eat.base.action.BaseAction;
+import com.xinfang.web.eat.modules.login.service.LoginService;
 
 /**
  * 登录
@@ -20,6 +23,10 @@ public class LoginAction extends BaseAction {
 	  |    I N S T A N C E   V A R I A B L E S    |
 	  ============================================*/
 
+	@Autowired
+	private LoginService loginService;
+	
+	
 	private String userName, password;
 
 	/*-------------------------------------------
@@ -28,10 +35,7 @@ public class LoginAction extends BaseAction {
 
 	public String login() throws Exception{
 		
-		
-		
-		
-		
+		loginService.validateLogin(userName, password);
 		
 		return SUCCESS;
 	}
