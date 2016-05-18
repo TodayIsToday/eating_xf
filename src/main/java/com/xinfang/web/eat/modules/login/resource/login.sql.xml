@@ -1,0 +1,18 @@
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xinfang.web.eat.modules.login.dao.LoginMapper">
+
+	<select id="validateLogin" resultType="Integer">
+		SELECT 
+			count(1) 
+		FROM 
+			xf_user 	t
+		WHERE
+			t.login_name = #{0}
+		<!-- AND
+			t.template_type = #{1} -->
+	</select>
+
+</mapper>

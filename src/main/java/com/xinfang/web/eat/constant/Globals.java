@@ -6,4 +6,5 @@ package com.xinfang.web.eat.constant;
  */
 public interface Globals {
 
+	
 }
