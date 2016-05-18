@@ -8,27 +8,21 @@
 	<constant value="false" name="struts.enable.DynamicMethodInvocation" />
 	<constant value="true" name="struts.devMode" />
 
-	<!-- 将action托管给spring -->
+
 	<constant name="struts.objectFactory" value="spring" />
 	<package name="default" extends="struts-default" namespace="/">
 		<default-action-ref name="index" />
 		<global-results>
 			<result name="error">/error.jsp</result>
 		</global-results>
-		
+
 		<global-exception-mappings>
 			<exception-mapping result="error" exception="java.lang.Exception" />
 		</global-exception-mappings>
 	</package>
 
-
-	<!-- Root webapp -->
-	<!-- <include file="config/struts2/struts-core.xml" /> <include file="config/struts2/struts-webapp-base.xml" 
-		/> <include file="config/struts2/struts-webapp.xml" /> -->
-	<!-- wildcard load struts.xml is incompatiblity -->
+	<!-- Exploded struts files -->
 	<include file="com/xinfang/web/eat/modules/*/resource/*.struts.xml" />
-	
-	<!-- <include file="com/xinfang/web/eat/modules/login/resource/login.struts.xml" /> -->
 
 </struts>
 
