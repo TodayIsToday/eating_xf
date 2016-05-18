@@ -4,12 +4,6 @@
     "http://struts.apache.org/dtds/struts-2.3.dtd">
 
 <struts>
-
-	<constant value="false" name="struts.enable.DynamicMethodInvocation" />
-	<constant value="true" name="struts.devMode" />
-
-
-	<constant name="struts.objectFactory" value="spring" />
 	<package name="default" extends="struts-default" namespace="/">
 		<default-action-ref name="index" />
 		<global-results>
@@ -19,6 +13,7 @@
 		<global-exception-mappings>
 			<exception-mapping result="error" exception="java.lang.Exception" />
 		</global-exception-mappings>
+
 	</package>
 
 	<!-- Exploded struts files -->

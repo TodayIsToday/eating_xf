@@ -12,6 +12,9 @@
 
 		<!-- Login 初期画面 -->
 		<action name="login" method="login">
+			<result name="success">
+				/WEB-INF/index.jsp
+			</result>
 		</action>
 
 		<action name="logout" method="logout">
