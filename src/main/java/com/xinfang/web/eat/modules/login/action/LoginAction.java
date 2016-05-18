@@ -33,9 +33,15 @@ public class LoginAction extends BaseAction {
 	  |               M E T H O D S               |
 	  ============================================*/
 
+	/**
+	 * 初试到登记页面
+	 * @return
+	 * @throws Exception
+	 */
 	public String login() throws Exception{
 		
-		loginService.validateLogin(userName, password);
+//		loginService.validateLogin(userName, password);
+		System.out.println("success");
 		
 		return SUCCESS;
 	}

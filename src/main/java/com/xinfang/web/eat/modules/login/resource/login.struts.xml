@@ -13,7 +13,7 @@
 		<!-- Login 初期画面 -->
 		<action name="login" method="login">
 			<result name="success">
-				/WEB-INF/index.jsp
+				/WEB-INF/jsp/login/login.jsp
 			</result>
 		</action>
 
