@@ -29,31 +29,14 @@
       // jQuery
       // --------------
       'jquery'           : 'vendors/jquery/js/jquery.min',
-      'jquery-select2'   : 'vendors/jquery-select2/js/select2.min',
-      'jquery.print'     : 'vendors/jquery-print/js/jQuery.print',
-      'jquery.uploadify' : 'vendors/jquery-uploadify/js/jquery.uploadify.min',
-      'jquery.blockUI'   : 'vendors/jquery-blockUI/js/jquery.blockUI',
-      'jquery.numeric'   : 'lib/jquery-numeric/jquery.numeric.min',
-      'jquery.jStorage'  : 'vendors/jStorage/js/jstorage.min',
       
       // bootstrap
       // --------------
       'bootstrap'              : 'vendors/bootstrap/js/bootstrap.min',
-      'bootstrap.select'       : 'vendors/bootstrap-select/js/bootstrap-select.min',
-      'bootstrap.datepicker'   : 'vendors/bootstrap-datepicker/js/bootstrap-datepicker.min',
-      'bootstrap.modal'        : 'vendors/bootstrap-modal/js/bootstrap-modal',
-      'bootstrap.modalmanager' : 'vendors/bootstrap-modal/js/bootstrap-modalmanager',
 
       // Lib
       // --------------
       'underscore' : 'vendors/underscore/js/underscore-min',
-      'moment'     : "vendors/moment/js/moment.min",
-      'mustache'   : "vendors/mustachejs/js/mustache.min",
-      'nprogress'  : 'vendors/nprogress/js/nprogress',
-
-      // Requirejs Plugins
-      // --------------
-      'domReady' : 'vendors/requirejs-domReady/js/domReady',
 
       // Application Folders
       // -------------------
@@ -64,23 +47,10 @@
       // bootstrap
       // --------------
       'bootstrap'              : { deps: ['jquery'] },
-      'bootstrap.select'       : { deps: ['bootstrap'] },
-      'bootstrap.datepicker'   : { deps: ['bootstrap'], exports: '$.fn.datepicker' },
-      'bootstrap.modal'        : { deps: ['bootstrap'] },
-      'bootstrap.modalmanager' : { deps: ['bootstrap'] },
 
       // Lib
       // -------
       'underscore' : { exports: '_' },
-      'nprogress'  : { deps: ['jquery'] },
-
-      // jQuery plugins
-      // --------------
-      'jquery-select2'   : { deps: ['jquery'] },
-      'jquery.print'     : { deps: ['jquery'] },
-      'jquery.uploadify' : { deps: ['jquery'] },
-      'jquery.numeric'   : { deps: ['jquery'] },
-      'jquery.jStorage'  : { deps: ['jquery'] }
     }
   });
 })();
