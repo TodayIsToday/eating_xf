@@ -6,18 +6,12 @@
 
 <struts>
 
-	<package name="login" extends="staff" namespace="/security">
+	<package name="login" extends="struts-default" namespace="/security">
 
 		<default-class-ref class="com.xinfang.web.eat.modules.login.action.LoginAction" />
 
 		<!-- Login 初期画面 -->
 		<action name="login" method="login">
-			<result name="success" type="tiles">staff.login</result>
-			<result name="input" type="tiles">staff.login</result>
-			<result name="redirect-to-top" type="redirectAction">
-				<param name="namespace">/top</param>
-				<param name="actionName">home</param>
-			</result>
 		</action>
 
 		<action name="logout" method="logout">
