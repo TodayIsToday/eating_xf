@@ -22,7 +22,7 @@
 	</package>
 
 	<!-- Exploded struts files -->
-	<!--  <include file="com/xinfang/web/eat/modules/*/resource/*.struts.xml" />  -->
+	<include file="com/xinfang/web/eat/modules/*/resource/*.struts.xml" />
 
 </struts>
 
