@@ -1,5 +1,7 @@
 package com.xinfang.web.eat.modules.login.action;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.xinfang.web.eat.base.action.BaseAction;
@@ -18,7 +20,12 @@ public class LoginAction extends BaseAction {
 	 ============================================*/
 
 	private static final long serialVersionUID = 1L;
-
+	// log4j return log4j
+//	private static final Logger LOG = LogManager.getLogger(LoginAction.class);
+	
+	// logBack return self4j
+	static final Logger LOG = LoggerFactory.getLogger(LoginAction.class);
+	
 	/*-------------------------------------------
 	  |    I N S T A N C E   V A R I A B L E S    |
 	  ============================================*/
@@ -40,8 +47,8 @@ public class LoginAction extends BaseAction {
 	 */
 	public String login() throws Exception{
 		
-//		loginService.validateLogin(userName, password);
-		System.out.println("success");
+		loginService.validateLogin(userName, password);
+		LOG.trace("Hello World!");
 		
 		return SUCCESS;
 	}

@@ -116,12 +116,23 @@
 			<version>1.0.13</version>
 		</dependency>
 
-		<!-- LOG -->
+		<!-- LOG4J && LOGBACK -->
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
 			<version>1.2.17</version>
 		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>1.0.13</version>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-core</artifactId>
+			<version>1.0.13</version>
+		</dependency>
+
 
 		<!-- Joda Time -->
 		<dependency>
@@ -150,3 +161,5 @@
 		<finalName>eating</finalName>
 	</build>
 </project>
+
+
