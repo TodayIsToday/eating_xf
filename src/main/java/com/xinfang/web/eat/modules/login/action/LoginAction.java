@@ -43,7 +43,7 @@ public class LoginAction extends BaseAction {
 		
 		// TODO init data
 		LOG.trace("Hello World!");
-		
+	
 		return SUCCESS;
 	}
 	
