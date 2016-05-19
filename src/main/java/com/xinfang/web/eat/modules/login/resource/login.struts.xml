@@ -10,19 +10,22 @@
 
 		<default-class-ref class="com.xinfang.web.eat.modules.login.action.LoginAction" />
 
-		<!-- Login 初期画面 -->
+		<!-- Login -->
 		<action name="login" method="login">
+			<result name="success">
+					/WEB-INF/jsp/main/main.jsp
+			</result>
+			<result name="input" type="redirectAction">
+				<param name="namespace">/security</param>
+				<param name="actionName">init</param>
+			</result>
+		</action>
+		
+		<!-- Login 初期画面  -->
+		<action name="init" method="init">
 			<result name="success">
 				/WEB-INF/jsp/login/login.jsp
 			</result>
 		</action>
-
-		<action name="logout" method="logout">
-			<result name="success" type="redirectAction">
-				<param name="namespace">/security</param>
-				<param name="actionName">login</param>
-			</result>
-		</action>
-
 	</package>
 </struts>

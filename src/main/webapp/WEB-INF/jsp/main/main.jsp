@@ -13,10 +13,10 @@
 })();
 </script>
 </head>
+<p>welcome:</p>
+
 <body>
-<s:form action="login" namespace="/security" method="post">
-<label>姓名：</label>
-<input name="userName" value="<s:property value="userName"/>">
-</s:form>
+
+
 </body>
 </html>

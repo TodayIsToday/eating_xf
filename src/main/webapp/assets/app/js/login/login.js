@@ -16,11 +16,7 @@
 
 			_init : function() {
 				this.options = $.extend( {}, $.Login.defaults, typeof options == 'object' && options );
-				this.test();
 			},
-			test : function(){
-				alert('testing..')
-			}
 		},
 		
 		$.Login = function(options) {

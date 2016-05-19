@@ -3,6 +3,8 @@ package com.xinfang.web.eat.modules.login.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Assert;
+
 import com.xinfang.web.eat.modules.login.dao.LoginMapper;
 import com.xinfang.web.eat.modules.login.service.LoginService;
 
@@ -27,6 +29,8 @@ public class LoginServiceImpl implements LoginService{
 	============================================*/
 	
 	public boolean validateLogin(String userName, String password) {
+		
+		Assert.notNull(userName);
 		
 		boolean hasCurrentLoginUser = true;
 		

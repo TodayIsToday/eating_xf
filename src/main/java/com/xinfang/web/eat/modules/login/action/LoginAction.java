@@ -43,18 +43,29 @@ public class LoginAction extends BaseAction {
 	/**
 	 * 初试到登记页面
 	 * @return
-	 * @throws Exception
 	 */
-	public String login() throws Exception{
+	public String init() {
 		
-		loginService.validateLogin(userName, password);
+		// TODO init data
 		LOG.trace("Hello World!");
 		
 		return SUCCESS;
 	}
 	
-	
-	
+	/**
+	 * 登录验证
+	 * @return
+	 */
+	public String login(){
+		// 校验
+		boolean isSuccessLogin = loginService.validateLogin(userName, password);
+		if(isSuccessLogin){
+			return SUCCESS;
+		}else{
+			return INPUT;
+		}
+		
+	}
 	
 	
 	
