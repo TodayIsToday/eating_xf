@@ -6,13 +6,20 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.struts2.ServletActionContext;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import com.xinfang.web.eat.bean.BaseUser;
+import com.xinfang.web.eat.modules.login.service.LoginService;
 
 public class BaseAction extends ActionSupport {
 
 	private static final long serialVersionUID = 1L;
+	
+
+	@Autowired
+	protected LoginService loginService;
 
 	// ---------------------------------------------------------------------------
 	// Request, Response, Session
@@ -35,5 +42,11 @@ public class BaseAction extends ActionSupport {
 
 	public ActionContext getContext() {
 		return ActionContext.getContext();
+	}
+	
+	// 获取当前登录者
+	public BaseUser getCurrentUser(){
+		
+		return loginService.getCurrentLoginUser();
 	}
 }

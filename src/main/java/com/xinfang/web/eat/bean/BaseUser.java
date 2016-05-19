@@ -13,7 +13,7 @@ public class BaseUser implements Serializable{
 	
 	protected String userUuid;
 	
-	protected String UserName;
+	protected String userName;
 	
 	protected String password;
 	
@@ -32,11 +32,11 @@ public class BaseUser implements Serializable{
 	}
 
 	public String getUserName() {
-		return UserName;
+		return userName;
 	}
 
 	public void setUserName(String userName) {
-		UserName = userName;
+		this.userName = userName;
 	}
 
 	public String getPassword() {

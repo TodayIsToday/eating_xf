@@ -1,10 +1,15 @@
 package com.xinfang.web.eat.modules.login.service.impl;
 
+import org.apache.commons.lang3.StringUtils;
+import org.apache.struts2.ServletActionContext;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.Assert;
 
+import com.xinfang.web.eat.bean.BaseUser;
+import com.xinfang.web.eat.constant.SessionKey;
 import com.xinfang.web.eat.modules.login.dao.LoginMapper;
 import com.xinfang.web.eat.modules.login.service.LoginService;
 
@@ -16,7 +21,7 @@ public class LoginServiceImpl implements LoginService{
 	|             C O N S T A N T S             |
 	============================================*/
 	
-	
+	private static final Logger LOG = LoggerFactory.getLogger(LoginServiceImpl.class);
 	/*-------------------------------------------
 	|    I N S T A N C E   V A R I A B L E S    |
 	============================================*/
@@ -30,10 +35,7 @@ public class LoginServiceImpl implements LoginService{
 	
 	public boolean validateLogin(String userName, String password) {
 		
-		Assert.notNull(userName);
-		
 		boolean hasCurrentLoginUser = true;
-		
 		
 		int rowNumber = loginMapper.validateLogin(userName, password);
 		
@@ -42,6 +44,17 @@ public class LoginServiceImpl implements LoginService{
 		}
 		
 		return hasCurrentLoginUser;
+	}
+
+
+	@Override
+	public BaseUser getCurrentLoginUser() {
+		String sessionLoginName = (String)ServletActionContext.getRequest().getSession().getAttribute(SessionKey.LOGIN_USER_SESSION_KEY);
+		if(StringUtils.isBlank(sessionLoginName)){
+			LOG.error("session 值为空");
+		}
+		BaseUser loginUser = loginMapper.getLoginUser( sessionLoginName );
+		return loginUser;
 	}
 
 }
