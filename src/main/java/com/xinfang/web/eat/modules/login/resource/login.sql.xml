@@ -15,4 +15,17 @@
 			t.template_type = #{1} -->
 	</select>
 
+	<select id="getLoginUser" resultType="com.xinfang.web.eat.bean.BaseUser">
+		SELECT 
+			 USER_NAME			AS		userName
+			 ,PASSWORD			AS		password
+			 ,LOGIN_NAME		AS		loginName
+			 ,MOBLIE_PHONE		AS		mobliePhone
+			 ,EMAIL				AS		email
+		FROM 
+			xf_user 	t
+		WHERE
+			t.login_name = #{0}
+	</select>
+	
 </mapper>
