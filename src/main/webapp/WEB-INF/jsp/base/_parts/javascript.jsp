@@ -1,11 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/jsp/base/tag.jsp" %>
 
-<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-<!--[if lte IE 9]>
-<script src="<%=request.getContextPath() %>/assets/vendors/respond/js/respond.min.js"></script>
-<script src="<%=request.getContextPath() %>/assets/vendors/html5shiv/js/html5shiv.min.js"></script>
-<![endif]-->
+
 
 <!-- RequirJS -->
 <script src="<%=request.getContextPath()%>/assets/vendors/requirejs/js/require.js"></script>
