@@ -2,10 +2,9 @@ package com.xinfang.web.eat.modules.account.action;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 
-import com.xinfang.web.eat.base.action.BaseAction;
-import com.xinfang.web.eat.modules.login.service.LoginService;
+import com.xinfang.web.eat.modules.base.action.BaseAction;
+
 
 /**
  * 账本
@@ -20,21 +19,12 @@ public class AccountAction extends BaseAction {
 	 ============================================*/
 
 	private static final long serialVersionUID = 1L;
-	// log4j return log4j
-//	private static final Logger LOG = LogManager.getLogger(LoginAction.class);
 	
-	// logBack return self4j
 	static final Logger LOG = LoggerFactory.getLogger(AccountAction.class);
 	
 	/*-------------------------------------------
 	  |    I N S T A N C E   V A R I A B L E S    |
 	  ============================================*/
-
-	@Autowired
-	private LoginService loginService;
-	
-	
-	
 
 	/*-------------------------------------------
 	  |               M E T H O D S               |
@@ -47,6 +37,17 @@ public class AccountAction extends BaseAction {
 		return SUCCESS;
 	}
 
+	/**
+	 * 管理员充值
+	 */
+	
+	
+	
+	
+	/**
+	 * 普通用户记账
+	 */
+	
 	
 	
 	

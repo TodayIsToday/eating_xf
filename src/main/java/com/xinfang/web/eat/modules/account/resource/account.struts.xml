@@ -12,7 +12,7 @@
 
 		<action name="account">
 			<result name="success">
-					/WEB-INF/jsp/account/account.jsp
+					/WEB-INF/jsp/account/account_common.jsp
 			</result>
 		</action>
 		

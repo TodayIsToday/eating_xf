@@ -1,5 +1,8 @@
 package com.xinfang.web.eat.modules.login.service.impl;
 
+
+import java.util.List;
+
 import org.apache.commons.lang3.StringUtils;
 import org.apache.struts2.ServletActionContext;
 import org.slf4j.Logger;
@@ -8,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.xinfang.web.eat.bean.BaseRole;
 import com.xinfang.web.eat.bean.BaseUser;
 import com.xinfang.web.eat.constant.SessionKey;
 import com.xinfang.web.eat.modules.login.dao.LoginMapper;
@@ -49,12 +53,34 @@ public class LoginServiceImpl implements LoginService{
 
 	@Override
 	public BaseUser getCurrentLoginUser() {
-		String sessionLoginName = (String)ServletActionContext.getRequest().getSession().getAttribute(SessionKey.LOGIN_USER_SESSION_KEY);
+		String sessionLoginName = (String)ServletActionContext.getRequest()
+				.getSession().getAttribute(SessionKey.LOGIN_USER_SESSION_KEY);
 		if(StringUtils.isBlank(sessionLoginName)){
 			LOG.error("session 值为空");
 		}
 		BaseUser loginUser = loginMapper.getLoginUser( sessionLoginName );
 		return loginUser;
+	}
+
+
+	@Override
+	public List<BaseRole> getCurrentLoginUserRole() {
+		String sessionLoginName = (String)ServletActionContext.getRequest()
+				.getSession().getAttribute(SessionKey.LOGIN_USER_SESSION_KEY);
+		if(StringUtils.isBlank(sessionLoginName)){
+			LOG.error("session 值为空");
+		}
+		
+		List<BaseRole> loginUserRole = loginMapper.getCurrentLoginUserRole(sessionLoginName);
+		
+		return loginUserRole;
+	}
+
+
+	@Override
+	public List<BaseUser> getAllUsers() {
+			
+		return loginMapper.getAllUsers();
 	}
 
 }

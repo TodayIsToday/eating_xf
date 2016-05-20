@@ -11,11 +11,22 @@
 })();
 </script>
 </head>
-<p>welcome:<s:property value="getCurrentUser().getUserName()"/></p>
+<p>
+welcome:<s:property value="getCurrentUser().getUserName()"/>
+</p>
 
-
+<s:form namespace="/security" action="logout">
+	<s:submit value="注销"/>
+</s:form>
 <body>
 
-
+<s:iterator value="getCurrentUserRole()" var="item">
+	<s:if test="#item.roleCode == 'rc_000'">
+		<!-- 管理员画面 -->
+		<s:include value="/WEB-INF/jsp/account/account_admin.jsp" />
+	</s:if>
+</s:iterator>
+<!-- 计费画面 -->
+<s:include value="/WEB-INF/jsp/account/account_common.jsp" />
 </body>
 </html>

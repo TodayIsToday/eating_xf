@@ -1,5 +1,9 @@
 package com.xinfang.web.eat.modules.login.service;
 
+
+import java.util.List;
+
+import com.xinfang.web.eat.bean.BaseRole;
 import com.xinfang.web.eat.bean.BaseUser;
 
 /**
@@ -21,4 +25,16 @@ public interface LoginService {
 	 * @return
 	 */
 	BaseUser getCurrentLoginUser();
+	
+	/**
+	 * 获取当前用户角色
+	 * @return
+	 */
+	List<BaseRole> getCurrentLoginUserRole();
+	
+	/**
+	 * 获取所有用户
+	 * @return
+	 */
+	List<BaseUser> getAllUsers();
 }

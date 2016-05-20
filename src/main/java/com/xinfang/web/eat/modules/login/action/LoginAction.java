@@ -1,10 +1,14 @@
 package com.xinfang.web.eat.modules.login.action;
 
+import java.util.Collections;
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.xinfang.web.eat.base.action.BaseAction;
+import com.xinfang.web.eat.bean.BaseUser;
 import com.xinfang.web.eat.constant.SessionKey;
+import com.xinfang.web.eat.modules.base.action.BaseAction;
 
 /**
  * 登录
@@ -19,10 +23,7 @@ public class LoginAction extends BaseAction {
 	 ============================================*/
 
 	private static final long serialVersionUID = 1L;
-	// log4j return log4j
-//	private static final Logger LOG = LogManager.getLogger(LoginAction.class);
 	
-	// logBack return self4j
 	static final Logger LOG = LoggerFactory.getLogger(LoginAction.class);
 	
 	/*-------------------------------------------
@@ -30,28 +31,21 @@ public class LoginAction extends BaseAction {
 	  ============================================*/
 	
 	private String userName, password;
+	
+	/**所有用户*/
+	public List<BaseUser> xfUserList = Collections.emptyList();
 
 	/*-------------------------------------------
 	  |               M E T H O D S               |
 	  ============================================*/
 
 	/**
-	 * 初试到登记页面
-	 * @return
-	 */
-	public String init() {
-		
-		// TODO init data
-		LOG.trace("Hello World!");
-	
-		return SUCCESS;
-	}
-	
-	/**
 	 * 登录验证
 	 * @return
 	 */
 	public String login(){
+		
+		xfUserList = loginService.getAllUsers();
 		
 		if(null != getCurrentUser()){
 			return SUCCESS;
@@ -65,8 +59,18 @@ public class LoginAction extends BaseAction {
 		}else{
 			return INPUT;
 		}
-		
 	}
+	
+	/**
+	 * 注销
+	 * @return
+	 */
+	public String logout(){
+			
+		getSession().removeAttribute(SessionKey.LOGIN_USER_SESSION_KEY);
+		return SUCCESS;
+	}
+	
 	
 	/*-------------------------------------------
 	 |        G E T T E R && S E T T E R          |

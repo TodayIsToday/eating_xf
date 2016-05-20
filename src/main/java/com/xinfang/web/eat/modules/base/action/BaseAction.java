@@ -1,4 +1,6 @@
-package com.xinfang.web.eat.base.action;
+package com.xinfang.web.eat.modules.base.action;
+
+import java.util.List;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -10,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import com.xinfang.web.eat.bean.BaseRole;
 import com.xinfang.web.eat.bean.BaseUser;
 import com.xinfang.web.eat.modules.login.service.LoginService;
 
@@ -48,5 +51,11 @@ public class BaseAction extends ActionSupport {
 	public BaseUser getCurrentUser(){
 		
 		return loginService.getCurrentLoginUser();
+	}
+	
+	// 获取当前用户角色
+	public List<BaseRole> getCurrentUserRole(){
+		
+		return loginService.getCurrentLoginUserRole();
 	}
 }

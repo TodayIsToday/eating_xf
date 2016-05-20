@@ -7,8 +7,7 @@
 !(function() {
 	"use strict";
 	require(['jquery','app/login/login'], function ($,ls){
-		console.log($('p').text());
-		$.Login();
+		
 	});
 })();
 </script>
@@ -18,8 +17,9 @@
 	<label>早饭<input type="radio" name="eating" value="0"/></label>&nbsp;
 	<label>中饭<input type="radio" name="eating" value="1"/></label>&nbsp;
 	<label>晚饭<input type="radio" name="eating" value="2"/></label>&nbsp;
-	<hr/>
-	<label>费用<input type="number" name="cost" min="0.01" max="100.00" step="0.1"/></label>
+	<br>
+	<br>
+	<label>费用<input type="number" name="cost" min="0.01" max="500" step="100"/></label>
 </s:form>
 </body>
 </html>

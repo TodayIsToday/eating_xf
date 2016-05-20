@@ -1,4 +1,4 @@
-package com.xinfang.web.eat.modules.login.dao;
+package com.xinfang.web.eat.modules.account.dao;
 
 
 import java.util.List;
@@ -11,7 +11,7 @@ import com.xinfang.web.eat.bean.BaseUser;
  * @author hk
  *
  */
-public interface LoginMapper {
+public interface AccountMapper {
 
 	/**
 	 * 登录验证
@@ -34,10 +34,4 @@ public interface LoginMapper {
 	 * @return
 	 */
 	List<BaseRole> getCurrentLoginUserRole(String userName);
-	
-	/**
-	 * 获取所有用户
-	 * @return
-	 */
-	List<BaseUser> getAllUsers();
 }

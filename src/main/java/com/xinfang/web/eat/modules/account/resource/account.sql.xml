@@ -1,0 +1,26 @@
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xinfang.web.eat.modules.account.dao.AccountMapper">
+
+	<!-- 获取当前用户角色 -->
+	<select id="getCurrentLoginUserRole" resultType="com.xinfang.web.eat.bean.BaseRole">
+		SELECT 
+			 role_name		AS		roleName
+			 ,role_code		AS		roleCode
+		FROM 
+			xf_user 	xu
+		INNER JOIN 
+			user_role_rela urr
+		ON
+			xu.xf_user_uuid = urr.xf_user_uuid
+		INNER JOIN 
+			xf_role xr
+		ON
+			urr.xf_role_uuid = xr.xf_role_uuid
+		WHERE
+			xu.login_name = #{0}
+	</select>
+	
+</mapper>

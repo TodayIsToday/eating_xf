@@ -15,6 +15,18 @@ public class BaseRole implements Serializable {
 	protected String roleUuid;
 
 	protected String roleName;
+	
+	protected String roleCode;
+	
+	
+
+	public String getRoleCode() {
+		return roleCode;
+	}
+
+	public void setRoleCode(String roleCode) {
+		this.roleCode = roleCode;
+	}
 
 	public String getRoleUuid() {
 		return roleUuid;
