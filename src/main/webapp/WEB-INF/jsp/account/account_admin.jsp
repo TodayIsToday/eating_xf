@@ -6,8 +6,10 @@
 <script type="text/javascript">
 !(function() {
 	"use strict";
-	require(['jquery','app/login/login'], function ($,ls){
-		
+	require(['jquery','app/account/account'], function ($){
+		$.UserAccount({
+			paymentURL : '<s:url namespace="/account" action="payment"/>'	// 充值
+		})
 	});
 })();
 </script>

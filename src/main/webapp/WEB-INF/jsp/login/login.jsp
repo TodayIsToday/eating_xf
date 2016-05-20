@@ -6,9 +6,9 @@
 <script type="text/javascript">
 !(function() {
 	"use strict";
-	require(['jquery','app/login/login'], function ($,ls){
-		console.log($('p').text());
-		$.Login();
+	require(['jquery','app/login/login'], function ($){
+		
+		$.Login()
 	});
 })();
 </script>

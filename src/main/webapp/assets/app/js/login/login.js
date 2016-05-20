@@ -1,9 +1,9 @@
 /**
  * 登记js
  */
-;
-(function() {
+;(function() {
 	"use strict";
+	console.log('teststa');
 	define([ 'jquery' ], function($) {
 
 		var Login = function(options) {
@@ -15,12 +15,14 @@
 			constructor : Login,
 
 			_init : function() {
+				console.log('asdfas');
 				this.options = $.extend( {}, $.Login.defaults, typeof options == 'object' && options );
 			},
-		},
+		}
 		
-		$.Login = function(options) {
-			return new Login(options);
-		};
 	});
+	
+	$.Login = function(options) {
+		return new Login(options);
+	};
 })();

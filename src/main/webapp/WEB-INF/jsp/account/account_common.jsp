@@ -20,6 +20,7 @@
 	<br>
 	<br>
 	<label>费用<input type="number" name="cost" min="0.01" max="500" step="100"/></label>
+	<s:submit value="付款"/>
 </s:form>
 </body>
 </html>

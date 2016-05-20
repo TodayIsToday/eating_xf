@@ -6,5 +6,13 @@ package com.xinfang.web.eat.constant;
  */
 public interface Globals {
 
+	interface Flag_Int{
+		int YES = 1;
+		int NO = 0;
+	}
 	
+	interface Flag{
+		int YES = 1;
+		int NO = 0;
+	}
 }

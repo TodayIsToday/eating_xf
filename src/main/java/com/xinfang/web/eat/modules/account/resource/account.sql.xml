@@ -4,23 +4,74 @@
 
 <mapper namespace="com.xinfang.web.eat.modules.account.dao.AccountMapper">
 
-	<!-- 获取当前用户角色 -->
-	<select id="getCurrentLoginUserRole" resultType="com.xinfang.web.eat.bean.BaseRole">
-		SELECT 
-			 role_name		AS		roleName
-			 ,role_code		AS		roleCode
-		FROM 
-			xf_user 	xu
-		INNER JOIN 
-			user_role_rela urr
-		ON
-			xu.xf_user_uuid = urr.xf_user_uuid
-		INNER JOIN 
-			xf_role xr
-		ON
-			urr.xf_role_uuid = xr.xf_role_uuid
-		WHERE
-			xu.login_name = #{0}
-	</select>
+	<!-- 记录账目表数据 -->
+	<insert id="insertAccount" parameterType="com.xinfang.web.eat.bean.BaseAccount">
+		INSERT INTO 
+			xf_account
+		 (
+		 xf_account_uuid,					<!-- 主键 -->
+		 total_price,						<!-- 总价 -->
+		 accout_type,						<!-- 付费类型 -->
+		 create_id,							<!-- 记录者-->
+		 update_id,							<!-- 更新者 -->
+		 create_time,						<!-- 记录时间 -->
+		 update_time,						<!-- 更新时间 -->
+		 xf_user_uuid						<!-- 用户主键 -->
+		 )
+		 VALUES(
+		 	#{accountUuid},
+		 	#{totalPrice},
+		 	#{accountType},
+		 	#{createId},
+		 	#{updateId},
+		 	#{createTime},
+		 	#{updateTime},
+		 	#{userUuid}
+		 )
+	</insert>
+	
+	<!-- 更新账单 -->
+	<update id="deleteBeforeData" parameterType="com.xinfang.web.eat.bean.BaseAccount">
+		UPDATE
+				xf_account
+			SET
+				<if test="null != totalPrice and '' != totalPrice">
+					total_price		= 		#{totalPrice},
+				</if>
+				<if test="null != accountType and '' != accountType">
+					accout_type		= 		#{accountType},
+				</if>
+				<if test="null != comment and '' != comment">
+					comment		= 		#{comment},
+				</if>
+					update_time		=		systimestamp
+			WHERE 
+				xf_account_uuid = #{accountUuid}
+	</update>
+	
+	<!-- 充值 -->
+	<insert id="insertTotalAccount" parameterType="com.xinfang.web.eat.bean.BaseUserAccount">
+		INSERT INTO 
+			xf_user_account
+		 (
+		 xf_user_account_uuid,				<!-- 主键 -->
+		 xf_user_uuid,						<!-- 充值对象-->
+		 total_account,						<!-- 充值金额 -->
+		 create_id,							<!-- 记录者-->
+		 update_id,							<!-- 更新者 -->
+		 create_time,						<!-- 记录时间 -->
+		 update_time,						<!-- 更新时间 -->
+		 )
+		 VALUES(
+		 	#{accountUuid},
+		 	#{totalPrice},
+		 	#{accountType},
+		 	#{createId},
+		 	#{updateId},
+		 	#{createTime},
+		 	#{updateTime},
+		 	#{userUuid}
+		 )
+	</insert>
 	
 </mapper>

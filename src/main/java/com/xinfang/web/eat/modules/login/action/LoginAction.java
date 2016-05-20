@@ -1,12 +1,9 @@
 package com.xinfang.web.eat.modules.login.action;
 
-import java.util.Collections;
-import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.xinfang.web.eat.bean.BaseUser;
 import com.xinfang.web.eat.constant.SessionKey;
 import com.xinfang.web.eat.modules.base.action.BaseAction;
 
@@ -32,8 +29,6 @@ public class LoginAction extends BaseAction {
 	
 	private String userName, password;
 	
-	/**所有用户*/
-	public List<BaseUser> xfUserList = Collections.emptyList();
 
 	/*-------------------------------------------
 	  |               M E T H O D S               |
@@ -44,8 +39,6 @@ public class LoginAction extends BaseAction {
 	 * @return
 	 */
 	public String login(){
-		
-		xfUserList = loginService.getAllUsers();
 		
 		if(null != getCurrentUser()){
 			return SUCCESS;

@@ -1,37 +1,33 @@
 package com.xinfang.web.eat.modules.account.dao;
 
-
-import java.util.List;
-
-import com.xinfang.web.eat.bean.BaseRole;
-import com.xinfang.web.eat.bean.BaseUser;
+import com.xinfang.web.eat.bean.BaseAccount;
+import com.xinfang.web.eat.bean.BaseUserAccount;
 
 /**
- * 登录mapper
- * @author hk
+ * 
+ * 账目相关
  *
  */
 public interface AccountMapper {
 
 	/**
-	 * 登录验证
-	 * @param userName
-	 * @param password
+	 * 记录单笔账目表数据
+	 * @param baseAccount
 	 * @return
 	 */
-	int validateLogin(String userName ,String password);
+	int insertAccount(BaseAccount baseAccount);
 	
 	/**
-	 * 获取登录者
-	 * @param userName
-	 * @param password
+	 * 更新单笔账单
+	 * @param baseAccount
 	 * @return
 	 */
-	BaseUser getLoginUser(String userName);
+	int deleteBeforeData(BaseAccount baseAccount);
 	
 	/**
-	 * 获取当前用户角色
+	 * 充值
+	 * @param baseUserAccount
 	 * @return
 	 */
-	List<BaseRole> getCurrentLoginUserRole(String userName);
+	int insertTotalAccount(BaseUserAccount baseUserAccount);
 }

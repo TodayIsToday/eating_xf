@@ -1,7 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="/WEB-INF/jsp/base/tag.jsp" %>
-
-
 
 <!-- RequirJS -->
 <script src="<%=request.getContextPath()%>/assets/vendors/requirejs/js/require.js"></script>
@@ -9,11 +6,6 @@
 <!-- RequirJS Core Configuration -->
 <script type="text/javascript">
 ;(function() {
-  /**
-   * Intergration Requirejs
-   *
-   * @author zhangxiong
-   */
   requirejs.config({
     baseUrl : '<%=request.getContextPath()%>/assets',
 

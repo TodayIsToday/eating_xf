@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.xinfang.web.eat.bean.BaseRole;
 import com.xinfang.web.eat.bean.BaseUser;
+import com.xinfang.web.eat.constant.Globals;
 import com.xinfang.web.eat.constant.SessionKey;
 import com.xinfang.web.eat.modules.login.dao.LoginMapper;
 import com.xinfang.web.eat.modules.login.service.LoginService;
@@ -43,7 +44,7 @@ public class LoginServiceImpl implements LoginService{
 		
 		int rowNumber = loginMapper.validateLogin(userName, password);
 		
-		if(rowNumber != 1){
+		if(rowNumber != Globals.Flag_Int.YES){
 			hasCurrentLoginUser = false;
 		}
 		

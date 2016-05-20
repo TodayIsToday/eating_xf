@@ -13,8 +13,8 @@ public class BaseAccount implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	protected String accountUuid;
-	/** 总价 */
-	protected String totalPrice;
+	/** 单次消费总价 */
+	protected float totalPrice;
 	/** 账单类型 */
 	protected String accountType;
 	
@@ -26,7 +26,7 @@ public class BaseAccount implements Serializable{
 	
 	protected Date createTime;
 	
-	protected Date UpdateTime;
+	protected Date updateTime;
 
 	public String getAccountUuid() {
 		return accountUuid;
@@ -36,11 +36,11 @@ public class BaseAccount implements Serializable{
 		this.accountUuid = accountUuid;
 	}
 
-	public String getTotalPrice() {
+	public float getTotalPrice() {
 		return totalPrice;
 	}
 
-	public void setTotalPrice(String totalPrice) {
+	public void setTotalPrice(float totalPrice) {
 		this.totalPrice = totalPrice;
 	}
 
@@ -85,13 +85,13 @@ public class BaseAccount implements Serializable{
 	}
 
 	public Date getUpdateTime() {
-		return UpdateTime;
+		return updateTime;
 	}
 
 	public void setUpdateTime(Date updateTime) {
-		UpdateTime = updateTime;
+		this.updateTime = updateTime;
 	}
-	
+
 	
 	
 }
