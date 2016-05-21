@@ -5,26 +5,24 @@
 	"use strict";
 	define([ 'jquery' ], function($) {
 
-		var UserAccount = function(options) {
-			this._init(options);
-		};
-
-		UserAccount.prototype = {
-
-			constructor : UserAccount,
-
-			_init : function() {
-				console.log('asdfas');
-				this.options = $.extend( {}, $.UserAccount.defaults, typeof options == 'object' && options );
+		var UserAccount = $.UserAccount = {
+			/**
+			 * init
+			 */
+			init : function(  ){
+				console.log('init testing');
+				this._payment();
 			},
-		}
+			
+			/**
+			 * 管理员充值
+			 */
+			_payment : function(){
+				
+				alert('payment');
+			}
+		};
 		
+		return UserAccount;
 	});
-	
-	$.UserAccount = function(options) {
-		return new UserAccount(options);
-	};
-	$.UserAccount.defaults = {
-			paymentURL : ''
-	}
 })();

@@ -6,10 +6,11 @@
 <script type="text/javascript">
 !(function() {
 	"use strict";
-	require(['jquery','app/account/account'], function ($){
-		$.UserAccount({
+	require(['jquery','app/account/account'], function ($,account){
+		/* $.UserAccount({
 			paymentURL : '<s:url namespace="/account" action="payment"/>'	// 充值
-		})
+		}) */
+		account.init();
 	});
 })();
 </script>
