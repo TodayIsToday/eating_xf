@@ -20,6 +20,17 @@
 			<result name="success" type="json">ajaxFlg</result>
 		</action>
 		
+		<action name="common" method="common">
+			<result name="success">
+					/WEB-INF/jsp/account/account_common.jsp
+			</result>
+		</action>
 		
+		<action name="insertCommon" method="insertCommon">
+			<result name="success" type="redirectAction">
+				<param name="actionName">common</param>
+    			<param name="namespace">/account</param>
+			</result>
+		</action>
 	</package>
 </struts>
