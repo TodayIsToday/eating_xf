@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+	<package name="login" extends="struts-default" namespace="/security">
+
+		<default-class-ref class="com.xinfang.web.eat.modules.login.action.LoginAction" />
+
+		<!-- Login 初期画面  -->
+		<action name="init" >
+			<result name="success">
+				/WEB-INF/jsp/login/login.jsp
+			</result>
+		</action>
+		
+		<!-- Login -->
+		<action name="login" method="login">
+			<result name="success">
+					/WEB-INF/jsp/main/main.jsp
+			</result>
+			<result name="input" type="redirectAction">
+				<param name="namespace">/security</param>
+				<param name="actionName">init</param>
+			</result>
+		</action>
+		
+		<!-- logOut -->
+		<action name="logout" method="logout">
+			<result name="success" type="redirectAction">
+				<param name="namespace">/security</param>
+				<param name="actionName">init</param>
+			</result>
+		</action>
+		
+	</package>
+</struts>

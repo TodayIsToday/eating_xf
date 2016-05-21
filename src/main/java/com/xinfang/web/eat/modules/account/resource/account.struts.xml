@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+	<package name="account" extends="json-default" namespace="/account">
+
+		<default-class-ref class="com.xinfang.web.eat.modules.account.action.AccountAction" />
+
+		<action name="init" method="init">
+			<result name="success">
+					/WEB-INF/jsp/account/account_admin.jsp
+			</result>
+		</action>
+		
+		<action name="payment" method="payment">
+			<result name="success" type="json">ajaxFlg</result>
+		</action>
+		
+		
+	</package>
+</struts>
