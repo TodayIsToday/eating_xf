@@ -1,7 +1,8 @@
 package com.xinfang.web.eat.bean;
 
 import java.io.Serializable;
-import java.util.Date;
+
+import org.joda.time.DateTime;
 
 /**
  * 用户充值表
@@ -23,9 +24,9 @@ public class BaseUserAccount implements Serializable {
 
 	protected String updateId;
 
-	protected Date createTime;
+	protected DateTime createTime;
 
-	protected Date updateTime;
+	protected DateTime updateTime;
 
 	
 	public String getCreateId() {
@@ -44,19 +45,19 @@ public class BaseUserAccount implements Serializable {
 		this.updateId = updateId;
 	}
 
-	public Date getCreateTime() {
+	public DateTime getCreateTime() {
 		return createTime;
 	}
 
-	public void setCreateTime(Date createTime) {
+	public void setCreateTime(DateTime createTime) {
 		this.createTime = createTime;
 	}
 
-	public Date getUpdateTime() {
+	public DateTime getUpdateTime() {
 		return updateTime;
 	}
 
-	public void setUpdateTime(Date updateTime) {
+	public void setUpdateTime(DateTime updateTime) {
 		this.updateTime = updateTime;
 	}
 

@@ -3,6 +3,7 @@ package com.xinfang.web.eat.modules.account.action;
 import java.util.Collections;
 import java.util.List;
 
+import org.apache.struts2.json.annotations.JSON;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -74,7 +75,7 @@ public class AccountAction extends BaseAction {
 	/*-------------------------------------------
 	 |        G E T T E R && S E T T E R          |
 	 ============================================*/
-	
+	@JSON(serialize=false)
 	public BaseUserAccount getBaseUserAccount() {
 		return baseUserAccount;
 	}
@@ -82,7 +83,6 @@ public class AccountAction extends BaseAction {
 	public void setBaseUserAccount(BaseUserAccount baseUserAccount) {
 		this.baseUserAccount = baseUserAccount;
 	}
-
 	public boolean isAjaxFlg() {
 		return ajaxFlg;
 	}

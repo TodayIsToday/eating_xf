@@ -19,7 +19,7 @@
 		 xf_user_uuid						<!-- 用户主键 -->
 		 )
 		 VALUES(
-		 	#{accountUuid},
+		 	#{userAccountUuid},
 		 	#{totalPrice},
 		 	#{accountType},
 		 	#{createId},
@@ -46,7 +46,7 @@
 				</if>
 					update_time		=		systimestamp
 			WHERE 
-				xf_account_uuid = #{accountUuid}
+				xf_account_uuid = #{userAccountUuid}
 	</update>
 	
 	<!-- 充值 -->
@@ -60,17 +60,16 @@
 		 create_id,							<!-- 记录者-->
 		 update_id,							<!-- 更新者 -->
 		 create_time,						<!-- 记录时间 -->
-		 update_time,						<!-- 更新时间 -->
+		 update_time						<!-- 更新时间 -->
 		 )
 		 VALUES(
-		 	#{accountUuid},
-		 	#{totalPrice},
-		 	#{accountType},
+		 	#{userAccountUuid},
+		 	#{userUuid},
+		 	#{totalAccount},
 		 	#{createId},
 		 	#{updateId},
 		 	#{createTime},
-		 	#{updateTime},
-		 	#{userUuid}
+		 	#{updateTime}
 		 )
 	</insert>
 	

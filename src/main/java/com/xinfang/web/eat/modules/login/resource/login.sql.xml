@@ -56,6 +56,7 @@
 			 ,LOGIN_NAME		AS		loginName
 			 ,MOBLIE_PHONE		AS		mobliePhone
 			 ,EMAIL				AS		email
+			 ,xf_user_uuid		AS		userUuid
 		FROM 
 			xf_user 	t
 	</select>
