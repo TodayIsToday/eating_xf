@@ -15,7 +15,9 @@
 		</global-exception-mappings>
 
 	</package>
-
+	
+	<!-- core -->
+	<include file="config/struts2/struts-core.xml"></include>
 	<!-- Exploded struts files -->
 	<include file="com/xinfang/web/eat/modules/*/resource/*.struts.xml" />
 

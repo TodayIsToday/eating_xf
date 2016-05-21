@@ -13,6 +13,7 @@
 </script>
 </head>
 <body>
+
 <s:form action="insertCommon" namespace="/account" method="post" cssClass="form-horizontal">
 		<div class="control-group">
 			<div class="controls">
@@ -35,8 +36,6 @@
 			</div>
 		</div>
 		<br>
-		
-	
 </s:form>
 <hr>
 消费记录

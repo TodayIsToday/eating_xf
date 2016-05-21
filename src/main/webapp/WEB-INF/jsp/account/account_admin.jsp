@@ -7,29 +7,31 @@
 !(function() {
 	"use strict";
 	require(['jquery','app/account/account'], function ($,account){
-		/* $.UserAccount({
+		account.init({
 			paymentURL : '<s:url namespace="/account" action="payment"/>'	// 充值
-		}) */
-		account.init();
+		});
 	});
 })();
 </script>
 </head>
 <body>
-<s:form action="" namespace="/" method="post">
-	
-	<label>充值<input type="number" name="cost" min="100" max="100.00" step="100.00"/></label>
-	
-	<label>预付人：</label>
-	<s:select list="xfUserList" 
-			  headerValue="--请选择--"
-			  headerKey=""
-			  name="userName"
-			  value="loginName"
-			  listValue="userName"
-			  listKey="loginName"/>
-	<s:submit value="充值"/>
-</s:form>
-<hr/>
+	<form data-class="admin-payment-form">
+		<label>充值
+			<input type="number" name="baseUserAccount.totalAccount" min="100" max="500.00" step="100.00"/>
+		</label>
+		
+		<label>预付人：
+		<s:select list="xfUserList" 
+				  headerValue="--请选择--"
+				  headerKey=""
+				  name="baseUserAccount.userUuid"
+				  value="baseUserAccount.userUuid"
+				  listValue="userName"
+				  listKey="userUuid"/>
+		</label>
+		<!-- button -->
+		<a href="javascript:void(0)" class="btn btn-primary" data-button="admin-payment">充值</a>
+	<form>
+	<hr/>
 </body>
 </html>

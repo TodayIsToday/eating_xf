@@ -5,6 +5,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
+import org.apache.struts2.json.annotations.JSON;
+import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -84,7 +86,7 @@ public class AccountAction extends BaseAction {
 		String userUuid = "b1c3c31b-1b82-11e6-bfe5-3c970ed624cf";
 		baseAccount.setCreateId(userUuid);
 		baseAccount.setUserUuid(userUuid);
-		baseAccount.setCreateTime(new Date());
+		baseAccount.setCreateTime(new DateTime());
 		baseAccount.setAccountUuid(UUID.randomUUID().toString());
 		Integer accountType = Integer.parseInt(baseAccount.getAccountType());
 		Float totalPrice = baseAccount.getTotalPrice();
@@ -105,7 +107,7 @@ public class AccountAction extends BaseAction {
 	/*-------------------------------------------
 	 |        G E T T E R && S E T T E R          |
 	 ============================================*/
-	
+	@JSON(serialize=false)
 	public BaseUserAccount getBaseUserAccount() {
 		return baseUserAccount;
 	}
@@ -113,7 +115,6 @@ public class AccountAction extends BaseAction {
 	public void setBaseUserAccount(BaseUserAccount baseUserAccount) {
 		this.baseUserAccount = baseUserAccount;
 	}
-
 	public boolean isAjaxFlg() {
 		return ajaxFlg;
 	}

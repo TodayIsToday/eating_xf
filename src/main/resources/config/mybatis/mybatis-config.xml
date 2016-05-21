@@ -4,10 +4,11 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 
-  <settings>
-    <setting name="jdbcTypeForNull" value="NULL" />
-  </settings>
+	<settings>
+		<setting name="jdbcTypeForNull" value="NULL" />
+	</settings>
 
-  <mappers/>
-
+	<typeHandlers>
+		<typeHandler handler="com.xinfang.web.eat.ext.mybatis.handler.DateTimeTypeHandler" />
+	</typeHandlers>
 </configuration>
