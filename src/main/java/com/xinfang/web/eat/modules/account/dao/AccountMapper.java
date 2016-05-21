@@ -1,6 +1,9 @@
 package com.xinfang.web.eat.modules.account.dao;
 
+import java.util.List;
+
 import com.xinfang.web.eat.bean.BaseAccount;
+import com.xinfang.web.eat.bean.BaseUser;
 import com.xinfang.web.eat.bean.BaseUserAccount;
 
 /**
@@ -30,4 +33,11 @@ public interface AccountMapper {
 	 * @return
 	 */
 	int insertTotalAccount(BaseUserAccount baseUserAccount);
+	
+	/**
+	 * 查询消费记录
+	 * @param baseUser
+	 * @return
+	 */
+	List<BaseAccount> selectAccounts(BaseUser baseUser);
 }

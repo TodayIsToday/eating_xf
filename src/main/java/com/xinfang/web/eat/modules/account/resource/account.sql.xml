@@ -73,4 +73,20 @@
 		 )
 	</insert>
 	
+	<!-- 用户明细 -->
+	<select id="selectAccounts" 
+		parameterType="com.xinfang.web.eat.bean.BaseUser"
+		resultType="com.xinfang.web.eat.bean.BaseAccount">
+		SELECT
+			total_price		AS		totalPrice
+			,accout_type	AS		accountType
+			,create_time	AS		createTime
+		FROM
+			xf_account
+		WHERE
+			xf_user_uuid	=	#{userUuid}
+		ORDER BY
+			create_time DESC
+	</select>
+	
 </mapper>

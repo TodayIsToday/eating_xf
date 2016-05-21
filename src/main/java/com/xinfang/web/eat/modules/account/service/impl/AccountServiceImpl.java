@@ -1,8 +1,11 @@
 package com.xinfang.web.eat.modules.account.service.impl;
 
+import java.util.List;
+
 import java.util.UUID;
 
 import org.joda.time.DateTime;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +13,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
+import com.xinfang.web.eat.bean.BaseAccount;
+import com.xinfang.web.eat.bean.BaseUser;
 import com.xinfang.web.eat.bean.BaseUserAccount;
 import com.xinfang.web.eat.constant.Globals;
 import com.xinfang.web.eat.modules.account.dao.AccountMapper;
@@ -56,5 +61,17 @@ public class AccountServiceImpl implements AccountService{
 		
 		return paySuccess;
 	}
+
+	@Override
+	public boolean insertCommonAccount(BaseAccount baseAccount) {
+		return accountMapper.insertAccount(baseAccount)>0;
+	}
+
+	@Override
+	public List<BaseAccount> commonAccount(BaseUser baseUser) {
+		return accountMapper.selectAccounts(baseUser);
+	}
+
+
 
 }
