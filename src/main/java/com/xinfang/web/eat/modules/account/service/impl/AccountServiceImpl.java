@@ -18,6 +18,7 @@ import com.xinfang.web.eat.bean.BaseUser;
 import com.xinfang.web.eat.bean.BaseUserAccount;
 import com.xinfang.web.eat.constant.Globals;
 import com.xinfang.web.eat.modules.account.dao.AccountMapper;
+import com.xinfang.web.eat.modules.account.entity.AccountDetails;
 import com.xinfang.web.eat.modules.account.service.AccountService;
 import com.xinfang.web.eat.modules.login.service.LoginService;
 
@@ -70,6 +71,30 @@ public class AccountServiceImpl implements AccountService{
 	@Override
 	public List<BaseAccount> commonAccount(BaseUser baseUser) {
 		return accountMapper.selectAccounts(baseUser);
+	}
+
+	@Override
+	public float balanceOfCard() {
+		float balanceOfCard = accountMapper.selectBalanceOfCard();
+		return balanceOfCard;
+	}
+
+	@Override
+	public float personBalanceOfCard(String loginName, String userUuid) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public List<AccountDetails> selectBalanceOfCard() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public AccountDetails selectPersonBalanceOfCard() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 

@@ -89,4 +89,55 @@
 			create_time DESC
 	</select>
 	
+	<!--  卡内余额 -->
+	<select id="selectBalanceOfCard" resultType="Float">
+		SELECT
+			SUM(ua.total_account) 
+				- 
+				(
+					SELECT 
+						SUM(fa.total_price) tp 
+					FROM 
+						xf_account fa 
+				) ta
+		FROM
+			xf_user_account ua 
+	</select>
+	
+	<!-- 账户余额 -->
+	<select id="personBalanceOfCard" parameterType="String" resultType="com.xinfang.web.eat.modules.account.entity.AccountDetails">
+		SELECT
+			L1-L2					AS			personBalanceOfCare			<!-- 个人账户余额 -->
+			,T1.xf_user_uuid		AS			userUuid					<!-- 用户主键 -->
+		FROM
+			(
+				SELECT 
+					SUM(t.total_account) 		AS 		L1,
+						t.xf_user_uuid 
+				FROM
+					xf_user_account t 
+				GROUP BY 
+					t.xf_user_uuid
+			)T1
+		LEFT JOIN
+			(
+				SELECT 
+					SUM(t2.total_price) 		AS 		L2,
+						t2.xf_user_uuid 
+				FROM 
+					xf_account t2 
+				GROUP BY 
+					t2.xf_user_uuid
+			)T2
+		ON
+			T1.xf_user_uuid=T2.xf_user_uuid
+		WHERE
+			1		=		1
+		<if test="">
+		AND
+			T1.xf_user_uuid		= 	#{userUuid}
+		</if>
+			
+	</select>
+	
 </mapper>

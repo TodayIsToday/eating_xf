@@ -23,6 +23,7 @@
 			 ,LOGIN_NAME		AS		loginName
 			 ,MOBLIE_PHONE		AS		mobliePhone
 			 ,EMAIL				AS		email
+			 ,XF_USER_UUID		AS		userUuid
 		FROM 
 			xf_user 	t
 		WHERE
@@ -60,4 +61,5 @@
 		FROM 
 			xf_user 	t
 	</select>
+	
 </mapper>

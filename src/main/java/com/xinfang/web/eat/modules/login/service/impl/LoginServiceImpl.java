@@ -84,4 +84,11 @@ public class LoginServiceImpl implements LoginService{
 		return loginMapper.getAllUsers();
 	}
 
+
+	@Override
+	public BaseUser getUserByLoginName(String loginName) {
+		BaseUser user = loginMapper.getLoginUser(loginName);
+		return user;
+	}
+
 }

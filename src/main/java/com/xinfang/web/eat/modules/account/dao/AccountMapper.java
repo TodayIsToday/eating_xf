@@ -5,6 +5,7 @@ import java.util.List;
 import com.xinfang.web.eat.bean.BaseAccount;
 import com.xinfang.web.eat.bean.BaseUser;
 import com.xinfang.web.eat.bean.BaseUserAccount;
+import com.xinfang.web.eat.modules.account.entity.AccountDetails;
 
 /**
  * 
@@ -40,4 +41,16 @@ public interface AccountMapper {
 	 * @return
 	 */
 	List<BaseAccount> selectAccounts(BaseUser baseUser);
+	
+	/**
+	 * 卡内应有余额
+	 * @return
+	 */
+	float selectBalanceOfCard();
+	
+	/**
+	 * @param userUuid 
+	 * @return
+	 */
+	List<AccountDetails> personBalanceOfCard( String userUuid);
 }

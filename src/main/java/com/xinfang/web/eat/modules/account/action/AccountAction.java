@@ -78,6 +78,9 @@ public class AccountAction extends BaseAction {
 	}
 	/**
 	 * 普通用户记账
+	 * @return
+	 * TODO for 涛哥
+	 * 建议各种逻辑 ，封装到service实现类中
 	 */
 	public String insertCommon(){
 //		BaseUser baseUser = loginService.getCurrentLoginUser();

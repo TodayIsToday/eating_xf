@@ -40,4 +40,10 @@ public interface LoginMapper {
 	 * @return
 	 */
 	List<BaseUser> getAllUsers();
+	
+	/**
+	 * 获取登录者
+	 * @return
+	 */
+	BaseUser getUserByLoginName(String loginName);
 }
