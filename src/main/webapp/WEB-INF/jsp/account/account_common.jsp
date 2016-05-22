@@ -30,6 +30,10 @@
 					<input type="radio" name="baseAccount.accountType" value="2">
 					晚饭
 				</label>
+				<label class="radio">
+					<input type="radio" name="baseAccount.accountType" value="3">
+					其他：我想买点粽子
+				</label>
 				<br>
 				<label class="control-label">费用</label>
 				<input type="number" min="0.0" max="100.0" step="0.1" name="baseAccount.totalPrice" style="height:30px"/>
@@ -54,8 +58,12 @@
 						<s:if test="accountType==2">晚饭</s:if>
 						<s:if test="accountType==3">其他</s:if>
 					</td>
-					<td><s:property value="totalPrice" /></td>
-					<td><s:property value="createTime" /></td>
+					<td>
+						<s:property value="totalPrice" />
+					</td>
+					<td>
+						<s:date name="createTime.toDate()" format="yyyy/MM/dd HH:mm:ss"/>
+					</td>
 				</tr>
 			</s:iterator>
 		</table>
