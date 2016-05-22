@@ -28,8 +28,8 @@
 		
 		<action name="insertCommon" method="insertCommon">
 			<result name="success" type="redirectAction">
-				<param name="actionName">common</param>
-    			<param name="namespace">/account</param>
+				<param name="actionName">login</param>
+    			<param name="namespace">/security</param>
 			</result>
 		</action>
 	</package>

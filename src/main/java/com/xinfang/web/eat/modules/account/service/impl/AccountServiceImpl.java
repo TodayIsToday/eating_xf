@@ -66,8 +66,8 @@ public class AccountServiceImpl implements AccountService{
 
 	@Override
 	public boolean insertCommonAccount(BaseAccount baseAccount,BaseUser baseUser) {
-//		String userUuid = baseUser.getUserUuid();
-		String userUuid = "b1c3c31b-1b82-11e6-bfe5-3c970ed624cf";
+		String userUuid = baseUser.getUserUuid();
+//		String userUuid = "b1c3c31b-1b82-11e6-bfe5-3c970ed624cf";
 		baseAccount.setCreateId(userUuid);
 		baseAccount.setUserUuid(userUuid);
 		baseAccount.setCreateTime(new DateTime());
