@@ -6,3 +6,9 @@
 <!-- Custom CSS -->
 <link href="<%=request.getContextPath() %>/assets/app/css/style.css" rel='stylesheet' type='text/css' />
 <link href="<%=request.getContextPath() %>/assets/app/css/font-awesome.css" rel="stylesheet"> 
+
+<!-- Graph CSS -->
+<link href="<%=request.getContextPath() %>/assets/app/css/lines.css" rel='stylesheet' type='text/css' />
+
+<!-- Nav CSS -->
+<link href="<%=request.getContextPath() %>/assets/app/css/custom.css" rel="stylesheet">
