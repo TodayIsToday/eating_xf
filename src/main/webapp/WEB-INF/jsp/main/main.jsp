@@ -47,9 +47,9 @@
 				</s:form>
 			</s:if>
 		</s:iterator>
-		<!-- 计费画面 -->
-		<s:include value="/WEB-INF/jsp/account/account_common.jsp" />
-		
+<div>
+	<s:action name="common" namespace="/account" executeResult="true"></s:action>
+</div>		
 	</div>
 </body>
 </html>

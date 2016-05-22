@@ -73,9 +73,9 @@ public class AccountAction extends BaseAction {
 	 * 普通用户账户明细
 	 */
 	public String common(){
-//		BaseUser baseUser = loginService.getCurrentLoginUser();
-		BaseUser baseUser = new BaseUser();
-		baseUser.setUserUuid("b1c3c31b-1b82-11e6-bfe5-3c970ed624cf");
+		BaseUser baseUser = loginService.getCurrentLoginUser();
+//		BaseUser baseUser = new BaseUser();
+//		baseUser.setUserUuid("b1c3c31b-1b82-11e6-bfe5-3c970ed624cf");
 		if(baseUser!=null){
 			accountCommon = accountService.commonAccount(baseUser);
 		}
