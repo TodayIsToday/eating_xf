@@ -30,57 +30,25 @@
 		</ul>
 		<!-- /.navbar-static-side --> </nav>
 		<div id="page-wrapper">
-		<div class="col_1">
-			<div class="col-md-4 span_7">
-				<div class="cal1 cal_2"></div>
-				<div class="clearfix"></div>
-			</div>
-			<div class="content_bottom">
-				<div class="col-md-8 span_3">
-					<div class="bs-example1" data-example-id="contextual-table">
-						<table class="table">
-							<thead>
-								<tr>
-									<th>姓名</th>
-									<th>余as</th>
-								</tr>
-							</thead>
-							<tbody>
-								<s:iterator value="acciontDetails" var="item" status="st">
-									<tr <s:if test="#st.even"> class="warning"</s:if>>
-										<td><s:property value="personBalanceOfCare" /></td>
-										<td><s:property value="userName" /></td>
-									</tr>
-								</s:iterator>
-							</tbody>
-						</table>
-					</div>
-				</div>
-				<div class="clearfix"></div>
-			</div>
-			<div class="copy">
-				<p>Copyright &copy; 2016.Company xf</p>
-			</div>
-		</div>
-		<!-- /#page-wrapper -->
 		<p>
-welcome:<s:property value="getCurrentUser().getUserName()"/>
-</p>
-
-<s:form namespace="/security" action="logout">
-	<s:submit value="注销"/>
-</s:form>
-
-<s:iterator value="getCurrentUserRole()" var="item">
-	<s:if test="#item.roleCode == 'rc_000'">
-		<!-- 管理员画面 -->
-		<s:form namespace="/account" action="init">
-			<s:submit value="充值"/>
+			welcome:<s:property value="getCurrentUser().getUserName()"/>
+		</p>
+		<p>
+			余额:<s:property value="getCurrentUserBalanceOfCard()"/>
+		</p>
+		<s:form namespace="/security" action="logout">
+			<input type="submit" class="btn btn-primary" value="注销" />
 		</s:form>
-	</s:if>
-</s:iterator>
-<!-- 计费画面 -->
-<s:include value="/WEB-INF/jsp/account/account_common.jsp" />
+		<s:iterator value="getCurrentUserRole()" var="item">
+			<s:if test="#item.roleCode == 'rc_000'">
+				<!-- 管理员画面 -->
+				<s:form namespace="/account" action="init">
+					<input type="submit" class="btn btn-primary" value="充值" />
+				</s:form>
+			</s:if>
+		</s:iterator>
+		<!-- 计费画面 -->
+		<s:include value="/WEB-INF/jsp/account/account_common.jsp" />
 		
 	</div>
 </body>

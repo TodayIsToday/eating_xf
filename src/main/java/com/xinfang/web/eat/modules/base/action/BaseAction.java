@@ -14,6 +14,7 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.xinfang.web.eat.bean.BaseRole;
 import com.xinfang.web.eat.bean.BaseUser;
+import com.xinfang.web.eat.modules.account.service.AccountService;
 import com.xinfang.web.eat.modules.login.service.LoginService;
 
 public class BaseAction extends ActionSupport {
@@ -23,6 +24,9 @@ public class BaseAction extends ActionSupport {
 
 	@Autowired
 	protected LoginService loginService;
+	@Autowired
+	protected AccountService accountService;
+
 
 	// ---------------------------------------------------------------------------
 	// Request, Response, Session
@@ -57,5 +61,12 @@ public class BaseAction extends ActionSupport {
 	public List<BaseRole> getCurrentUserRole(){
 		
 		return loginService.getCurrentLoginUserRole();
+	}
+	// 获取当前用户余额
+	public float getCurrentUserBalanceOfCard(){
+		
+		float balanceOfcard =  accountService.currentUserBalanceOfCard().getPersonBalanceOfCare();
+		
+		return balanceOfcard;
 	}
 }
