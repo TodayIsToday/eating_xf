@@ -41,13 +41,17 @@
 						<table class="table">
 							<thead>
 								<tr>
-									<th>#</th>
 									<th>姓名</th>
-									<th>余额</th>
+									<th>余as</th>
 								</tr>
 							</thead>
 							<tbody>
-
+								<s:iterator value="acciontDetails" var="item" status="st">
+									<tr <s:if test="#st.even"> class="warning"</s:if>>
+										<td><s:property value="personBalanceOfCare" /></td>
+										<td><s:property value="userName" /></td>
+									</tr>
+								</s:iterator>
 							</tbody>
 						</table>
 					</div>

@@ -43,4 +43,10 @@ public interface LoginService {
 	 * @return
 	 */
 	BaseUser getUserByLoginName(String loginName);
+	
+	/**
+	 * 获取用户信息通过userUUid
+	 * @return
+	 */
+	BaseUser getUserByUserUuid(String userUuid);
 }

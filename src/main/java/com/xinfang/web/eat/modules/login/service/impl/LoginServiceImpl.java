@@ -91,4 +91,11 @@ public class LoginServiceImpl implements LoginService{
 		return user;
 	}
 
+
+	@Override
+	public BaseUser getUserByUserUuid(String userUuid) {
+		BaseUser user = loginMapper.getLoginUserByUuid(userUuid);
+		return user;
+	}
+
 }

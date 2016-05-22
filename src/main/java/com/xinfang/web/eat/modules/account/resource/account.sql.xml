@@ -107,8 +107,8 @@
 	<!-- 账户余额 -->
 	<select id="personBalanceOfCard" parameterType="String" resultType="com.xinfang.web.eat.modules.account.entity.AccountDetails">
 		SELECT
-			L1-L2					AS			personBalanceOfCare			<!-- 个人账户余额 -->
-			,T1.xf_user_uuid		AS			userUuid					<!-- 用户主键 -->
+			L1<![CDATA[ - ]]> IFNULL(L2,0)		AS			personBalanceOfCare			<!-- 个人账户余额 -->
+			,T1.xf_user_uuid					AS			userUuid					<!-- 用户主键 -->
 		FROM
 			(
 				SELECT 
@@ -133,7 +133,7 @@
 			T1.xf_user_uuid=T2.xf_user_uuid
 		WHERE
 			1		=		1
-		<if test="">
+		<if test="null != userUuid and '' != userUuid">
 		AND
 			T1.xf_user_uuid		= 	#{userUuid}
 		</if>

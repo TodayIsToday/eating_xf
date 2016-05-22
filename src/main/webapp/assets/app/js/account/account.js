@@ -3,14 +3,13 @@
  */
 ;(function() {
 	"use strict";
-	define([ 'jquery' ], function($) {
+	define([ 'jquery' ,'app/utils/serializeObject'], function($) {
 
 		var UserAccount = $.UserAccount = {
 			/**
 			 * init
 			 */
 			init : function( options ){
-				console.log('init testing');
 				this._payment( options );
 			},
 			
@@ -22,9 +21,11 @@
 				$('body').on('click','[data-button="admin-payment"]',function(){
 					
 					var $btn = $(this),
-						formDate = {};
+						formDate = {},
+						jsonDate = {};
 					
 					formDate = $('[data-class="admin-payment-form"]').serialize();
+					jsonDate = $('[data-class="admin-payment-form"]').serializeObject();
 					
 					$.ajax({
 						type  : 'POST',
@@ -33,7 +34,12 @@
 						cache : false,
 						success : function( result ){
 							if(result.ajaxFlg === true){
-								alert('充值成功');
+								var userUuid = jsonDate['baseUserAccount.userUuid'];
+								var payment = + $('input[name="baseUserAccount.totalAccount"]').val();
+								var payUser = "";
+								var bfAccount = + $('tbody').find('td').filter("[data-class="+userUuid+"]").text().trim();
+								$('tbody').find('td').filter("[data-class="+userUuid+"]").text( payment + bfAccount );
+								alert('充值成功!'+payUser+'卡内余额'+ (payment + bfAccount));
 							}else{
 								alert('充值失败，请联系管理员');
 							}

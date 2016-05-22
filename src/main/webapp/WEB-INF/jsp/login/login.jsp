@@ -18,7 +18,7 @@
 	<div class="app-cam">
 		<s:form action="login" namespace="/security" method="post" >
 			<input type="text" class="text" name="userName" value="<s:property value="userName"/>" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Login name';}">
-			<input type="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}">
+			<!-- <input type="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}"> -->
 			<div class="submit">
 				<input type="submit" value="Login">
 			</div>

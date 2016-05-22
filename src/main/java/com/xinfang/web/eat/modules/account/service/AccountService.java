@@ -42,16 +42,14 @@ public interface AccountService {
 	float balanceOfCard();
 	
 	/**
-	 * 
+	 * 查询用户账户余额
 	 * @param loginName
-	 * @param userUuid 
-	 * 	两个条件那个方便用哪个
 	 * @return
 	 */
-	float personBalanceOfCard(String loginName , String userUuid);
+	float selectpersonBalanceOfCard(String loginName );
 	
 	/**
-	 * 查询账户余额列表
+	 * 查询所有用户账户余额列表
 	 * @param userUuid 
 	 * @return
 	 */
@@ -62,5 +60,5 @@ public interface AccountService {
 	 * @param userUuid 
 	 * @return
 	 */
-	AccountDetails selectPersonBalanceOfCard();
+	AccountDetails currentUserBalanceOfCard();
 }

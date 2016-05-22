@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.xinfang.web.eat.bean.BaseAccount;
 import com.xinfang.web.eat.bean.BaseUser;
 import com.xinfang.web.eat.bean.BaseUserAccount;
+import com.xinfang.web.eat.modules.account.entity.AccountDetails;
 import com.xinfang.web.eat.modules.account.service.AccountService;
 import com.xinfang.web.eat.modules.base.action.BaseAction;
 
@@ -43,12 +44,13 @@ public class AccountAction extends BaseAction {
 	private BaseUserAccount baseUserAccount;
 	/**异步返回标志*/
 	private boolean ajaxFlg;
-	
 	/**消费bean*/
 	private BaseAccount baseAccount;
-	/**消费记录*/
-	private List<BaseAccount> baseAccounts;
 	
+	/**消费记录*/
+	public List<BaseAccount> baseAccounts = Collections.emptyList();
+	/**所有用户账户余额*/
+	public List<AccountDetails> acciontDetails = Collections.emptyList();
 	@Autowired
 	private AccountService accountService;
 	/*-------------------------------------------
@@ -60,7 +62,10 @@ public class AccountAction extends BaseAction {
 	 * @return
 	 */
 	public String init(){
+		// 用户列表
 		xfUserList = loginService.getAllUsers();
+		// 账户余额列表
+		acciontDetails = accountService.selectBalanceOfCard();
 		return SUCCESS;
 	}
 	
@@ -124,27 +129,5 @@ public class AccountAction extends BaseAction {
 	public void setAjaxFlg(boolean ajaxFlg) {
 		this.ajaxFlg = ajaxFlg;
 	}
-
-
-	public BaseAccount getBaseAccount() {
-		return baseAccount;
-	}
-
-
-	public void setBaseAccount(BaseAccount baseAccount) {
-		this.baseAccount = baseAccount;
-	}
-
-
-	public List<BaseAccount> getBaseAccounts() {
-		return baseAccounts;
-	}
-
-
-	public void setBaseAccounts(List<BaseAccount> baseAccounts) {
-		this.baseAccounts = baseAccounts;
-	}
-	
-
 
 }

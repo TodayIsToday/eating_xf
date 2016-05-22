@@ -30,6 +30,14 @@ public interface LoginMapper {
 	BaseUser getLoginUser(String userName);
 	
 	/**
+	 * 获取登录者通过主键
+	 * @param userName
+	 * @param password
+	 * @return
+	 */
+	BaseUser getLoginUserByUuid(String userUuid);
+	
+	/**
 	 * 获取当前用户角色
 	 * @return
 	 */

@@ -30,6 +30,21 @@
 			t.login_name = #{0}
 	</select>
 	
+	<!-- 获取登录者通过主键 -->
+	<select id="getLoginUserByUuid" resultType="com.xinfang.web.eat.bean.BaseUser">
+		SELECT 
+			 USER_NAME			AS		userName
+			 ,PASSWORD			AS		password
+			 ,LOGIN_NAME		AS		loginName
+			 ,MOBLIE_PHONE		AS		mobliePhone
+			 ,EMAIL				AS		email
+			 ,XF_USER_UUID		AS		userUuid
+		FROM 
+			xf_user 	t
+		WHERE
+			t.xf_user_uuid = #{0}
+	</select>
+	
 	<!-- 获取当前用户角色 -->
 	<select id="getCurrentLoginUserRole" resultType="com.xinfang.web.eat.bean.BaseRole">
 		SELECT 

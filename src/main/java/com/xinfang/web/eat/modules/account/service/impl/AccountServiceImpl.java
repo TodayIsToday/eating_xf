@@ -80,21 +80,33 @@ public class AccountServiceImpl implements AccountService{
 	}
 
 	@Override
-	public float personBalanceOfCard(String loginName, String userUuid) {
-		// TODO Auto-generated method stub
-		return 0;
+	public float selectpersonBalanceOfCard(String loginName) {
+		BaseUser user = loginService.getUserByLoginName(loginName);
+		AccountDetails accountDetail = accountMapper.personBalanceOfCard(user.getUserUuid()).get(0);
+		float balanceOfCare = accountDetail.getPersonBalanceOfCare();
+		return balanceOfCare;
 	}
 
 	@Override
 	public List<AccountDetails> selectBalanceOfCard() {
-		// TODO Auto-generated method stub
-		return null;
+		List<AccountDetails> listDetails= accountMapper.personBalanceOfCard(null);
+		// 获取用户姓名
+		for (AccountDetails accountDetails : listDetails) {
+			String userName = loginService.getUserByUserUuid(accountDetails.getUserUuid()).getUserName();
+			accountDetails.setUserName(userName);
+		}
+		return listDetails;
 	}
 
 	@Override
-	public AccountDetails selectPersonBalanceOfCard() {
-		// TODO Auto-generated method stub
-		return null;
+	public AccountDetails currentUserBalanceOfCard() {
+		BaseUser user = loginService.getCurrentLoginUser();
+		if(null == user){
+			LOG.error("当前用户不存在");
+			return null;
+		}
+		AccountDetails accountDetail = accountMapper.personBalanceOfCard(user.getUserUuid()).get(0);
+		return accountDetail;
 	}
 
 

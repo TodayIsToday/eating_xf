@@ -3,7 +3,6 @@
  */
 ;(function() {
 	"use strict";
-	console.log('teststa');
 	define([ 'jquery' ], function($) {
 
 		var Login = function(options) {
