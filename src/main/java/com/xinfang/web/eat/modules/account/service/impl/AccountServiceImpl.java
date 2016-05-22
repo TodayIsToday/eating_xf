@@ -120,8 +120,9 @@ public class AccountServiceImpl implements AccountService{
 			LOG.error("当前用户不存在");
 			return null;
 		}
-		AccountDetails accountDetail = accountMapper.personBalanceOfCard(user.getUserUuid()).get(0);
-		return accountDetail;
+		String userUuid = user.getUserUuid();
+		List<AccountDetails> list = accountMapper.personBalanceOfCard(userUuid);
+		return list.get(0);
 	}
 
 

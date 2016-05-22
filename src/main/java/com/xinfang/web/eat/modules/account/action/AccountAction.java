@@ -6,14 +6,12 @@ import java.util.List;
 import org.apache.struts2.json.annotations.JSON;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import com.xinfang.web.eat.bean.BaseAccount;
 import com.xinfang.web.eat.bean.BaseUser;
 import com.xinfang.web.eat.bean.BaseUserAccount;
 import com.xinfang.web.eat.modules.account.entity.AccountDetails;
 import com.xinfang.web.eat.modules.account.entity.AccountCommonEntity;
-import com.xinfang.web.eat.modules.account.service.AccountService;
 import com.xinfang.web.eat.modules.base.action.BaseAction;
 
 
@@ -54,8 +52,6 @@ public class AccountAction extends BaseAction {
 	public List<BaseAccount> baseAccounts = Collections.emptyList();
 	/**所有用户账户余额*/
 	public List<AccountDetails> acciontDetails = Collections.emptyList();
-	@Autowired
-	private AccountService accountService;
 	/*-------------------------------------------
 	  |               M E T H O D S               |
 	  ============================================*/
