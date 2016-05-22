@@ -5,6 +5,7 @@ import java.util.List;
 import com.xinfang.web.eat.bean.BaseAccount;
 import com.xinfang.web.eat.bean.BaseUser;
 import com.xinfang.web.eat.bean.BaseUserAccount;
+import com.xinfang.web.eat.modules.account.entity.AccountCommonEntity;
 import com.xinfang.web.eat.modules.account.entity.AccountDetails;
 
 /**
@@ -26,14 +27,14 @@ public interface AccountService {
 	 * @param baseAccount
 	 * @return
 	 */
-	boolean insertCommonAccount(BaseAccount baseAccount);
+	boolean insertCommonAccount(BaseAccount baseAccount,BaseUser baseUser);
 	
 	/**
 	 * 查询消费记录
 	 * @param baseUser
 	 * @return
 	 */
-	List<BaseAccount> commonAccount(BaseUser baseUser);
+	AccountCommonEntity commonAccount(BaseUser baseUser);
 	
 	/**
 	 * 卡内应有余额

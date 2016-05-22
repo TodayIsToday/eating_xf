@@ -18,6 +18,7 @@ import com.xinfang.web.eat.bean.BaseUser;
 import com.xinfang.web.eat.bean.BaseUserAccount;
 import com.xinfang.web.eat.constant.Globals;
 import com.xinfang.web.eat.modules.account.dao.AccountMapper;
+import com.xinfang.web.eat.modules.account.entity.AccountCommonEntity;
 import com.xinfang.web.eat.modules.account.entity.AccountDetails;
 import com.xinfang.web.eat.modules.account.service.AccountService;
 import com.xinfang.web.eat.modules.login.service.LoginService;
@@ -64,13 +65,27 @@ public class AccountServiceImpl implements AccountService{
 	}
 
 	@Override
-	public boolean insertCommonAccount(BaseAccount baseAccount) {
-		return accountMapper.insertAccount(baseAccount)>0;
+	public boolean insertCommonAccount(BaseAccount baseAccount,BaseUser baseUser) {
+//		String userUuid = baseUser.getUserUuid();
+		String userUuid = "b1c3c31b-1b82-11e6-bfe5-3c970ed624cf";
+		baseAccount.setCreateId(userUuid);
+		baseAccount.setUserUuid(userUuid);
+		baseAccount.setCreateTime(new DateTime());
+		baseAccount.setAccountUuid(UUID.randomUUID().toString());
+		Integer accountType = Integer.parseInt(baseAccount.getAccountType());
+		Float totalPrice = baseAccount.getTotalPrice();
+		boolean flag = false;
+		if(accountType!=null && accountType>-1 && accountType<4 && totalPrice>0.00)
+			flag = accountMapper.insertAccount(baseAccount)>0;
+		return flag;
 	}
 
 	@Override
-	public List<BaseAccount> commonAccount(BaseUser baseUser) {
-		return accountMapper.selectAccounts(baseUser);
+	public AccountCommonEntity commonAccount(BaseUser baseUser) {
+		AccountCommonEntity accountCommon = new AccountCommonEntity();
+		accountCommon.setBaseAccounts(accountMapper.selectAccounts(baseUser));
+		accountCommon.setAccountSum(accountMapper.accountSum(baseUser));
+		return accountCommon;
 	}
 
 	@Override

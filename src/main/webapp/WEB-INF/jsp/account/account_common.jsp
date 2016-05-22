@@ -32,7 +32,7 @@
 				</label>
 				<br>
 				<label class="control-label">费用</label>
-				<input type="number" name="baseAccount.totalPrice"/>
+				<input type="number" min="0.0" max="100.0" step="0.1" name="baseAccount.totalPrice"/>
 				<s:submit value="付款" cssClass="btn btn-primary"/>
 			</div>
 		</div>
@@ -46,7 +46,7 @@
 				<th>消费金额</th>
 				<th>消费时间</th>
 			</tr>
-			<s:iterator value="baseAccounts">
+			<s:iterator value="accountCommon.baseAccounts">
 				<tr>
 					<td><s:property value="accountType" /></td>
 					<td><s:property value="totalPrice" /></td>
@@ -54,5 +54,6 @@
 				</tr>
 			</s:iterator>
 		</table>
+消费总计：<s:property value="accountCommon.accountSum" />
 </body>
 </html>

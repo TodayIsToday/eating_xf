@@ -2,10 +2,8 @@ package com.xinfang.web.eat.modules.account.action;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.UUID;
 
 import org.apache.struts2.json.annotations.JSON;
-import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +12,7 @@ import com.xinfang.web.eat.bean.BaseAccount;
 import com.xinfang.web.eat.bean.BaseUser;
 import com.xinfang.web.eat.bean.BaseUserAccount;
 import com.xinfang.web.eat.modules.account.entity.AccountDetails;
+import com.xinfang.web.eat.modules.account.entity.AccountCommonEntity;
 import com.xinfang.web.eat.modules.account.service.AccountService;
 import com.xinfang.web.eat.modules.base.action.BaseAction;
 
@@ -42,10 +41,14 @@ public class AccountAction extends BaseAction {
 	
 	/**充值bean*/
 	private BaseUserAccount baseUserAccount;
+	
 	/**异步返回标志*/
 	private boolean ajaxFlg;
 	/**消费bean*/
 	private BaseAccount baseAccount;
+	
+	/**消费历史页面*/
+	private AccountCommonEntity accountCommon;
 	
 	/**消费记录*/
 	public List<BaseAccount> baseAccounts = Collections.emptyList();
@@ -77,29 +80,18 @@ public class AccountAction extends BaseAction {
 //		BaseUser baseUser = loginService.getCurrentLoginUser();
 		BaseUser baseUser = new BaseUser();
 		baseUser.setUserUuid("b1c3c31b-1b82-11e6-bfe5-3c970ed624cf");
-		if(baseUser!=null)
-			baseAccounts = accountService.commonAccount(baseUser);
+		if(baseUser!=null){
+			accountCommon = accountService.commonAccount(baseUser);
+		}
 		return SUCCESS;
 	}
 	/**
 	 * 普通用户记账
 	 * @return
-	 * TODO for 涛哥
-	 * 建议各种逻辑 ，封装到service实现类中
 	 */
 	public String insertCommon(){
-//		BaseUser baseUser = loginService.getCurrentLoginUser();
-//		String userUuid = baseUser.getUserUuid();
-		String userUuid = "b1c3c31b-1b82-11e6-bfe5-3c970ed624cf";
-		baseAccount.setCreateId(userUuid);
-		baseAccount.setUserUuid(userUuid);
-		baseAccount.setCreateTime(new DateTime());
-		baseAccount.setAccountUuid(UUID.randomUUID().toString());
-		Integer accountType = Integer.parseInt(baseAccount.getAccountType());
-		Float totalPrice = baseAccount.getTotalPrice();
-		if(accountType!=null && accountType>-1 && accountType<4 && totalPrice>0.00)
-			return accountService.insertCommonAccount(baseAccount)?SUCCESS:ERROR;
-		return ERROR;
+		BaseUser baseUser = loginService.getCurrentLoginUser();
+		return accountService.insertCommonAccount(baseAccount,baseUser)?SUCCESS:ERROR;
 	}
 	
 	/**
@@ -128,6 +120,20 @@ public class AccountAction extends BaseAction {
 
 	public void setAjaxFlg(boolean ajaxFlg) {
 		this.ajaxFlg = ajaxFlg;
+	}
+	@JSON(serialize=false)
+	public BaseAccount getBaseAccount() {
+		return baseAccount;
+	}
+	public void setBaseAccount(BaseAccount baseAccount) {
+		this.baseAccount = baseAccount;
+	}
+	@JSON(serialize=false)
+	public AccountCommonEntity getAccountCommon() {
+		return accountCommon;
+	}
+	public void setAccountCommon(AccountCommonEntity accountCommon) {
+		this.accountCommon = accountCommon;
 	}
 
 }

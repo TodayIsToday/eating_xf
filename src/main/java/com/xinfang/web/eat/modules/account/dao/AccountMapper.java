@@ -53,4 +53,9 @@ public interface AccountMapper {
 	 * @return
 	 */
 	List<AccountDetails> personBalanceOfCard( String userUuid);
+	
+	/**
+	 * 查询消费历史总计
+	 */
+	Float accountSum(BaseUser baseUser);
 }

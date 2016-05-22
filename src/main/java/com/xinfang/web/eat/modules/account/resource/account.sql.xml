@@ -19,7 +19,7 @@
 		 xf_user_uuid						<!-- 用户主键 -->
 		 )
 		 VALUES(
-		 	#{userAccountUuid},
+		 	#{accountUuid},
 		 	#{totalPrice},
 		 	#{accountType},
 		 	#{createId},
@@ -140,4 +140,15 @@
 			
 	</select>
 	
+	<!-- 历史消费总计 -->
+	<select id="accountSum"
+		parameterType="com.xinfang.web.eat.bean.BaseUser" 
+		resultType="float">
+		SELECT
+			sum(total_price)		AS		accountSum
+		FROM
+			xf_account
+		WHERE
+			xf_user_uuid	=	#{userUuid}
+	</select>
 </mapper>
