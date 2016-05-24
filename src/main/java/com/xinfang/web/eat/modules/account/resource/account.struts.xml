@@ -21,8 +21,8 @@
 		</action>
 		
 		<action name="common" method="common">
-			<result name="success">
-					/WEB-INF/jsp/account/account_common.jsp
+			<result name="success" type="json">
+				<param name="root">accountCommon</param>
 			</result>
 		</action>
 		

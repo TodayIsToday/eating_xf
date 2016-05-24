@@ -48,7 +48,7 @@
 			</s:if>
 		</s:iterator>
 <div>
-	<s:action name="common" namespace="/account" executeResult="true"></s:action>
+	<s:include value="/WEB-INF/jsp/account/account_common.jsp"/>
 </div>		
 	</div>
 </body>

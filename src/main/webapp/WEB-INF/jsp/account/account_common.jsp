@@ -7,7 +7,29 @@
 !(function() {
 	"use strict";
 	require(['jquery','app/login/login'], function ($,ls){
-		
+		$(".moreAccount").on("click",function(){moreAccount()});
+		var moreAccount = function(){
+			$.post({
+				url:"/eating/account/common.do",
+				data:{},
+				dataType:"json",
+				success:function(accountCommon){
+					$("#accountSum").text("[消费总计："+accountCommon.accountSum+"]");
+					//alert(accountCommon.baseAccounts);
+					for (var i=0;i<accountCommon.baseAccounts.length;i++){
+						var baseAccount = accountCommon.baseAccounts[i];
+						$(".moreAccount").parent().before(
+								"<tr>"+
+								"<th>"+baseAccount.accountType+"</th>"+
+								"<th>"+baseAccount.totalPrice+"</th>"+
+								"<th>"+baseAccount.createTime+"</th>"+
+								"</tr>"
+						);
+					}
+				}
+			});
+		};
+		moreAccount();
 	});
 })();
 </script>
@@ -43,7 +65,7 @@
 		<br>
 </s:form>
 <hr>
-消费记录
+消费记录<span id="accountSum" style="color: red;"></span>
 		<table>
 			<tr>
 				<th>消费类型</th>
@@ -66,7 +88,10 @@
 					</td>
 				</tr>
 			</s:iterator>
+			<tr>
+				<th class="moreAccount" colspan="3"><a>︾</a></th>
+			</tr>
 		</table>
-消费总计：<s:property value="accountCommon.accountSum" />
+		
 </body>
 </html>

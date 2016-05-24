@@ -124,7 +124,7 @@ public class AccountAction extends BaseAction {
 	public void setBaseAccount(BaseAccount baseAccount) {
 		this.baseAccount = baseAccount;
 	}
-	@JSON(serialize=false)
+
 	public AccountCommonEntity getAccountCommon() {
 		return accountCommon;
 	}
