@@ -9,9 +9,11 @@
 	require(['jquery','app/login/login'], function ($,ls){
 		$(".moreAccount").on("click",function(){moreAccount()});
 		var moreAccount = function(){
+			var pageNum = $(".moreAccount").attr("data-class-pageNum");
+			pageNum = parseInt(pageNum)+1;
 			$.post({
 				url:"/eating/account/common.do",
-				data:{},
+				data:{"pageNum":pageNum},
 				dataType:"json",
 				success:function(accountCommons){
 					//$("#accountSum").text("[消费总计："+accountCommon.accountSum+"]");
@@ -25,6 +27,7 @@
 								"</tr>"
 						);
 					}
+					$(".moreAccount").attr("data-class-pageNum",pageNum);
 				}
 			});
 		};
@@ -72,7 +75,7 @@
 				<th>消费时间</th>
 			</tr>
 			<tr>
-				<th class="moreAccount" colspan="3"><a>︾</a></th>
+				<th class="moreAccount" colspan="3" data-class-pageNum="0"><a>︾</a></th>
 			</tr>
 		</table>
 		

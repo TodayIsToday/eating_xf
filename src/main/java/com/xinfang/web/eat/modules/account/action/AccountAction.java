@@ -45,8 +45,11 @@ public class AccountAction extends BaseAction {
 	/**消费bean*/
 	private BaseAccount baseAccount;
 	
-	/**消费历史页面*/
+	/**历史消费*/
 	private List<AccountCommonEntity> accountCommons;
+	
+	/**当前页数*/
+	private Integer pageNum = 1;
 	
 	/**消费记录*/
 	public List<BaseAccount> baseAccounts = Collections.emptyList();
@@ -75,7 +78,7 @@ public class AccountAction extends BaseAction {
 	public String common(){
 		BaseUser baseUser = loginService.getCurrentLoginUser();
 		if(baseUser!=null){
-			accountCommons = accountService.commonAccount(baseUser);
+			accountCommons = accountService.commonAccount(baseUser,pageNum);
 		}
 		return SUCCESS;
 	}
@@ -131,6 +134,16 @@ public class AccountAction extends BaseAction {
 
 	public void setAccountCommons(List<AccountCommonEntity> accountCommons) {
 		this.accountCommons = accountCommons;
+	}
+
+
+	public Integer getPageNum() {
+		return pageNum;
+	}
+
+
+	public void setPageNum(Integer pageNum) {
+		this.pageNum = pageNum;
 	}
 
 	

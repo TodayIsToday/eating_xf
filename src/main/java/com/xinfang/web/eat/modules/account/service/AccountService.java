@@ -7,6 +7,7 @@ import com.xinfang.web.eat.bean.BaseUser;
 import com.xinfang.web.eat.bean.BaseUserAccount;
 import com.xinfang.web.eat.modules.account.entity.AccountCommonEntity;
 import com.xinfang.web.eat.modules.account.entity.AccountDetails;
+import com.xinfang.web.eat.modules.account.entity.PageNumEntity;
 
 /**
  * 
@@ -34,7 +35,7 @@ public interface AccountService {
 	 * @param baseUser
 	 * @return
 	 */
-	List<AccountCommonEntity> commonAccount(BaseUser baseUser);
+	List<AccountCommonEntity> commonAccount(BaseUser baseUser,Integer pageNum);
 	
 	/**
 	 * 卡内应有余额

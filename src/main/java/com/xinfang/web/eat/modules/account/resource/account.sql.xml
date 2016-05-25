@@ -75,7 +75,7 @@
 	
 	<!-- 用户明细 -->
 	<select id="selectAccounts" 
-		parameterType="com.xinfang.web.eat.bean.BaseUser"
+		parameterType="com.xinfang.web.eat.modules.account.entity.PageNumEntity"
 		resultType="com.xinfang.web.eat.modules.account.entity.AccountCommonEntity">
 		SELECT
 			total_price		AS		totalPrice
@@ -84,9 +84,10 @@
 		FROM
 			xf_account
 		WHERE
-			xf_user_uuid	=	#{userUuid}
+			xf_user_uuid	=	#{baseUser.userUuid}
 		ORDER BY
 			create_time DESC
+		LIMIT #{startRn},#{pageSize}
 	</select>
 	
 	<!--  卡内余额 -->
