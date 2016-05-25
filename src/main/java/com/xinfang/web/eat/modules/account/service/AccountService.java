@@ -34,7 +34,7 @@ public interface AccountService {
 	 * @param baseUser
 	 * @return
 	 */
-	AccountCommonEntity commonAccount(BaseUser baseUser);
+	List<AccountCommonEntity> commonAccount(BaseUser baseUser);
 	
 	/**
 	 * 卡内应有余额

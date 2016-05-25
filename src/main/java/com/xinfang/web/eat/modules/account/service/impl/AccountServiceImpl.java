@@ -81,11 +81,8 @@ public class AccountServiceImpl implements AccountService{
 	}
 
 	@Override
-	public AccountCommonEntity commonAccount(BaseUser baseUser) {
-		AccountCommonEntity accountCommon = new AccountCommonEntity();
-		accountCommon.setBaseAccounts(accountMapper.selectAccounts(baseUser));
-		accountCommon.setAccountSum(accountMapper.accountSum(baseUser));
-		return accountCommon;
+	public List<AccountCommonEntity> commonAccount(BaseUser baseUser) {	
+		return accountMapper.selectAccounts(baseUser);
 	}
 
 	@Override

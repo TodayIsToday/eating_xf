@@ -22,7 +22,7 @@
 		
 		<action name="common" method="common">
 			<result name="success" type="json">
-				<param name="root">accountCommon</param>
+				<param name="root">accountCommons</param>
 			</result>
 		</action>
 		

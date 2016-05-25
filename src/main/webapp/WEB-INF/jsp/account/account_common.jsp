@@ -13,16 +13,15 @@
 				url:"/eating/account/common.do",
 				data:{},
 				dataType:"json",
-				success:function(accountCommon){
-					$("#accountSum").text("[消费总计："+accountCommon.accountSum+"]");
-					//alert(accountCommon.baseAccounts);
-					for (var i=0;i<accountCommon.baseAccounts.length;i++){
-						var baseAccount = accountCommon.baseAccounts[i];
+				success:function(accountCommons){
+					//$("#accountSum").text("[消费总计："+accountCommon.accountSum+"]");
+					for (var i=0;i<accountCommons.length;i++){
+						var account = accountCommons[i];
 						$(".moreAccount").parent().before(
 								"<tr>"+
-								"<th>"+baseAccount.accountType+"</th>"+
-								"<th>"+baseAccount.totalPrice+"</th>"+
-								"<th>"+baseAccount.createTime+"</th>"+
+								"<th>"+account.accountTypeName+"</th>"+
+								"<th>"+account.totalPrice+"</th>"+
+								"<th>"+account.dateTime+"</th>"+
 								"</tr>"
 						);
 					}
@@ -72,22 +71,6 @@
 				<th>消费金额</th>
 				<th>消费时间</th>
 			</tr>
-			<s:iterator value="accountCommon.baseAccounts">
-				<tr>
-					<td>
-						<s:if test="accountType==0">早饭</s:if>
-						<s:if test="accountType==1">中饭</s:if>
-						<s:if test="accountType==2">晚饭</s:if>
-						<s:if test="accountType==3">其他</s:if>
-					</td>
-					<td>
-						<s:property value="totalPrice" />
-					</td>
-					<td>
-						<s:date name="createTime.toDate()" format="yyyy/MM/dd HH:mm:ss"/>
-					</td>
-				</tr>
-			</s:iterator>
 			<tr>
 				<th class="moreAccount" colspan="3"><a>︾</a></th>
 			</tr>

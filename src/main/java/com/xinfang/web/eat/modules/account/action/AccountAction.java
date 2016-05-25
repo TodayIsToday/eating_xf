@@ -46,7 +46,7 @@ public class AccountAction extends BaseAction {
 	private BaseAccount baseAccount;
 	
 	/**消费历史页面*/
-	private AccountCommonEntity accountCommon;
+	private List<AccountCommonEntity> accountCommons;
 	
 	/**消费记录*/
 	public List<BaseAccount> baseAccounts = Collections.emptyList();
@@ -74,10 +74,8 @@ public class AccountAction extends BaseAction {
 	 */
 	public String common(){
 		BaseUser baseUser = loginService.getCurrentLoginUser();
-//		BaseUser baseUser = new BaseUser();
-//		baseUser.setUserUuid("b1c3c31b-1b82-11e6-bfe5-3c970ed624cf");
 		if(baseUser!=null){
-			accountCommon = accountService.commonAccount(baseUser);
+			accountCommons = accountService.commonAccount(baseUser);
 		}
 		return SUCCESS;
 	}
@@ -125,11 +123,15 @@ public class AccountAction extends BaseAction {
 		this.baseAccount = baseAccount;
 	}
 
-	public AccountCommonEntity getAccountCommon() {
-		return accountCommon;
-	}
-	public void setAccountCommon(AccountCommonEntity accountCommon) {
-		this.accountCommon = accountCommon;
+
+	public List<AccountCommonEntity> getAccountCommons() {
+		return accountCommons;
 	}
 
+
+	public void setAccountCommons(List<AccountCommonEntity> accountCommons) {
+		this.accountCommons = accountCommons;
+	}
+
+	
 }

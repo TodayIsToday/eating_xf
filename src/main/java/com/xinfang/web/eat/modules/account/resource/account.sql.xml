@@ -76,11 +76,11 @@
 	<!-- 用户明细 -->
 	<select id="selectAccounts" 
 		parameterType="com.xinfang.web.eat.bean.BaseUser"
-		resultType="com.xinfang.web.eat.bean.BaseAccount">
+		resultType="com.xinfang.web.eat.modules.account.entity.AccountCommonEntity">
 		SELECT
 			total_price		AS		totalPrice
-			,accout_type	AS		accountType
-			,create_time	AS		createTime
+			,accout_type	AS		accountTypeName
+			,date_format(create_time,'%Y-%c-%d %h:%i:%s')	AS		dateTime
 		FROM
 			xf_account
 		WHERE

@@ -1,27 +1,49 @@
 package com.xinfang.web.eat.modules.account.entity;
 
-import java.util.List;
+import java.io.Serializable;
 
 import com.xinfang.web.eat.bean.BaseAccount;
 
-public class AccountCommonEntity {
-	/**消费记录*/
-	private List<BaseAccount> baseAccounts;
-	/**历史消费总计*/
-	private float accountSum;
+public class AccountCommonEntity extends BaseAccount implements Serializable{
 	
-	public List<BaseAccount> getBaseAccounts() {
-		return baseAccounts;
+	private static final long serialVersionUID = 1L;
+	
+	private String accountTypeName;
+	
+	private String dateTime;
+
+	public String getDateTime() {
+		return dateTime;
 	}
-	public void setBaseAccounts(List<BaseAccount> baseAccounts) {
-		this.baseAccounts = baseAccounts;
+
+	public void setDateTime(String dateTime) {
+		this.dateTime = dateTime;
 	}
-	public float getAccountSum() {
-		return accountSum;
+
+	public String getAccountTypeName() {
+		return accountTypeName;
 	}
-	public void setAccountSum(float accountSum) {
-		this.accountSum = accountSum;
+
+	public void setAccountTypeName(String accountTypeName) {
+		Integer typeName = Integer.valueOf(accountTypeName);
+		switch (typeName) {
+		case 0:
+			this.accountTypeName = "早饭";
+			break;
+		case 1:
+			this.accountTypeName = "中饭";
+			break;
+		case 2:
+			this.accountTypeName = "晚饭";
+			break;
+		case 3:
+			this.accountTypeName = "其他";
+			break;
+		}
+		
 	}
+	
+	
 	
 	
 }
