@@ -10,12 +10,17 @@
 		$(".moreAccount").on("click",function(){moreAccount()});
 		var moreAccount = function(){
 			var pageNum = $(".moreAccount").attr("data-class-pageNum");
+			if(pageNum==-1) return;
 			pageNum = parseInt(pageNum)+1;
 			$.post({
 				url:"/eating/account/common.do",
 				data:{"pageNum":pageNum},
 				dataType:"json",
 				success:function(accountCommons){
+					if(accountCommons.length==0){
+						$(".moreAccount").attr("data-class-pageNum",-1);
+						$(".moreAccount").text("木有记录了！");
+					}
 					//$("#accountSum").text("[消费总计："+accountCommon.accountSum+"]");
 					for (var i=0;i<accountCommons.length;i++){
 						var account = accountCommons[i];
