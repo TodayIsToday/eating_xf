@@ -32,5 +32,7 @@
     			<param name="namespace">/security</param>
 			</result>
 		</action>
+		
+		<action name="tupian" method="tupian"></action>
 	</package>
 </struts>

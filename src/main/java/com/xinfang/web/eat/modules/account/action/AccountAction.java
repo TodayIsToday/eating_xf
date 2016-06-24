@@ -3,6 +3,11 @@ package com.xinfang.web.eat.modules.account.action;
 import java.util.Collections;
 import java.util.List;
 
+import javax.imageio.ImageIO;
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.json.annotations.JSON;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,6 +18,7 @@ import com.xinfang.web.eat.bean.BaseUserAccount;
 import com.xinfang.web.eat.modules.account.entity.AccountDetails;
 import com.xinfang.web.eat.modules.account.entity.AccountCommonEntity;
 import com.xinfang.web.eat.modules.base.action.BaseAction;
+import com.xinfang.web.eat.util.Tupian;
 
 
 /**
@@ -59,6 +65,33 @@ public class AccountAction extends BaseAction {
 	  |               M E T H O D S               |
 	  ============================================*/
 
+	public String tupian(){
+		 HttpServletResponse response = null;
+	        ServletOutputStream out = null;
+	        try {
+	            response = ServletActionContext.getResponse();
+	            response.setHeader("Cache-Control","no-cache"); //HTTP 1.1
+	            response.setHeader("Pragma","no-cache"); //HTTP 1.0
+	            response.setDateHeader("Expires", -1); //prevents caching at the proxy server
+	            response.setContentType("image/png");
+	            //response.setContentType("multipart/form-data");
+	            out = response.getOutputStream();
+	            ImageIO.write(Tupian.creatImage(), "PNG", response.getOutputStream());
+	            out.flush();
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        } finally {
+	            if (out != null) {
+	                try {
+	                    out.close();
+	                } catch (Exception e) {
+	                    e.printStackTrace();
+	                }
+	            }
+	        }
+	        return null;
+	}
+	
 	/**
 	 * 初试化
 	 * @return

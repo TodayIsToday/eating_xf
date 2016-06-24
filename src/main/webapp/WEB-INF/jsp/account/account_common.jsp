@@ -42,7 +42,7 @@
 </script>
 </head>
 <body>
-
+<img src="<s:url namespace="/account" action='tupian'/>"></img>
 
 <s:form action="insertCommon" namespace="/account" method="post" cssClass="form-horizontal">
 		<div class="control-group">
