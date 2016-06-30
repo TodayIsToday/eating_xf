@@ -21,8 +21,8 @@
 		</action>
 		
 		<action name="common" method="common">
-			<result name="success">
-					/WEB-INF/jsp/account/account_common.jsp
+			<result name="success" type="json">
+				<param name="root">accountCommons</param>
 			</result>
 		</action>
 		
@@ -32,5 +32,7 @@
     			<param name="namespace">/security</param>
 			</result>
 		</action>
+		
+		<action name="tupian" method="tupian"></action>
 	</package>
 </struts>

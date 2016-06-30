@@ -3,6 +3,11 @@ package com.xinfang.web.eat.modules.account.action;
 import java.util.Collections;
 import java.util.List;
 
+import javax.imageio.ImageIO;
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.json.annotations.JSON;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,6 +18,7 @@ import com.xinfang.web.eat.bean.BaseUserAccount;
 import com.xinfang.web.eat.modules.account.entity.AccountDetails;
 import com.xinfang.web.eat.modules.account.entity.AccountCommonEntity;
 import com.xinfang.web.eat.modules.base.action.BaseAction;
+import com.xinfang.web.eat.util.Tupian;
 
 
 /**
@@ -45,8 +51,11 @@ public class AccountAction extends BaseAction {
 	/**消费bean*/
 	private BaseAccount baseAccount;
 	
-	/**消费历史页面*/
-	private AccountCommonEntity accountCommon;
+	/**历史消费*/
+	private List<AccountCommonEntity> accountCommons;
+	
+	/**当前页数*/
+	private Integer pageNum = 1;
 	
 	/**消费记录*/
 	public List<BaseAccount> baseAccounts = Collections.emptyList();
@@ -56,6 +65,33 @@ public class AccountAction extends BaseAction {
 	  |               M E T H O D S               |
 	  ============================================*/
 
+	public String tupian(){
+		 HttpServletResponse response = null;
+	        ServletOutputStream out = null;
+	        try {
+	            response = ServletActionContext.getResponse();
+	            response.setHeader("Cache-Control","no-cache"); //HTTP 1.1
+	            response.setHeader("Pragma","no-cache"); //HTTP 1.0
+	            response.setDateHeader("Expires", -1); //prevents caching at the proxy server
+	            response.setContentType("image/png");
+	            //response.setContentType("multipart/form-data");
+	            out = response.getOutputStream();
+	            ImageIO.write(Tupian.creatImage(), "PNG", response.getOutputStream());
+	            out.flush();
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        } finally {
+	            if (out != null) {
+	                try {
+	                    out.close();
+	                } catch (Exception e) {
+	                    e.printStackTrace();
+	                }
+	            }
+	        }
+	        return null;
+	}
+	
 	/**
 	 * 初试化
 	 * @return
@@ -74,10 +110,8 @@ public class AccountAction extends BaseAction {
 	 */
 	public String common(){
 		BaseUser baseUser = loginService.getCurrentLoginUser();
-//		BaseUser baseUser = new BaseUser();
-//		baseUser.setUserUuid("b1c3c31b-1b82-11e6-bfe5-3c970ed624cf");
 		if(baseUser!=null){
-			accountCommon = accountService.commonAccount(baseUser);
+			accountCommons = accountService.commonAccount(baseUser,pageNum);
 		}
 		return SUCCESS;
 	}
@@ -124,12 +158,26 @@ public class AccountAction extends BaseAction {
 	public void setBaseAccount(BaseAccount baseAccount) {
 		this.baseAccount = baseAccount;
 	}
-	@JSON(serialize=false)
-	public AccountCommonEntity getAccountCommon() {
-		return accountCommon;
-	}
-	public void setAccountCommon(AccountCommonEntity accountCommon) {
-		this.accountCommon = accountCommon;
+
+
+	public List<AccountCommonEntity> getAccountCommons() {
+		return accountCommons;
 	}
 
+
+	public void setAccountCommons(List<AccountCommonEntity> accountCommons) {
+		this.accountCommons = accountCommons;
+	}
+
+
+	public Integer getPageNum() {
+		return pageNum;
+	}
+
+
+	public void setPageNum(Integer pageNum) {
+		this.pageNum = pageNum;
+	}
+
+	
 }

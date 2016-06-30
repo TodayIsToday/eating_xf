@@ -7,13 +7,42 @@
 !(function() {
 	"use strict";
 	require(['jquery','app/login/login'], function ($,ls){
-		
+		$(".moreAccount").on("click",function(){moreAccount()});
+		var moreAccount = function(){
+			var pageNum = $(".moreAccount").attr("data-class-pageNum");
+			if(pageNum==-1) return;
+			pageNum = parseInt(pageNum)+1;
+			$.post({
+				url:"/eating/account/common.do",
+				data:{"pageNum":pageNum},
+				dataType:"json",
+				success:function(accountCommons){
+					if(accountCommons.length==0){
+						$(".moreAccount").attr("data-class-pageNum",-1);
+						$(".moreAccount").text("木有记录了！");
+					}
+					//$("#accountSum").text("[消费总计："+accountCommon.accountSum+"]");
+					for (var i=0;i<accountCommons.length;i++){
+						var account = accountCommons[i];
+						$(".moreAccount").parent().before(
+								"<tr>"+
+								"<th>"+account.accountTypeName+"</th>"+
+								"<th>"+account.totalPrice+"</th>"+
+								"<th>"+account.dateTime+"</th>"+
+								"</tr>"
+						);
+					}
+					$(".moreAccount").attr("data-class-pageNum",pageNum);
+				}
+			});
+		};
+		moreAccount();
 	});
 })();
 </script>
 </head>
 <body>
-
+<img src="<s:url namespace="/account" action='tupian'/>"></img>
 
 <s:form action="insertCommon" namespace="/account" method="post" cssClass="form-horizontal">
 		<div class="control-group">
@@ -30,6 +59,10 @@
 					<input type="radio" name="baseAccount.accountType" value="2">
 					晚饭
 				</label>
+				<label class="radio">
+					<input type="radio" name="baseAccount.accountType" value="3">
+					其他：我想买点粽子
+				</label>
 				<br>
 				<label class="control-label">费用</label>
 				<input type="number" min="0.0" max="100.0" step="0.1" name="baseAccount.totalPrice" style="height:30px"/>
@@ -39,26 +72,17 @@
 		<br>
 </s:form>
 <hr>
-消费记录
+消费记录<span id="accountSum" style="color: red;"></span>
 		<table>
 			<tr>
 				<th>消费类型</th>
 				<th>消费金额</th>
 				<th>消费时间</th>
 			</tr>
-			<s:iterator value="accountCommon.baseAccounts">
-				<tr>
-					<td>
-						<s:if test="accountType==0">早饭</s:if>
-						<s:if test="accountType==1">中饭</s:if>
-						<s:if test="accountType==2">晚饭</s:if>
-						<s:if test="accountType==3">其他</s:if>
-					</td>
-					<td><s:property value="totalPrice" /></td>
-					<td><s:property value="createTime" /></td>
-				</tr>
-			</s:iterator>
+			<tr>
+				<th class="moreAccount" colspan="3" data-class-pageNum="0"><a>︾</a></th>
+			</tr>
 		</table>
-消费总计：<s:property value="accountCommon.accountSum" />
+		
 </body>
 </html>

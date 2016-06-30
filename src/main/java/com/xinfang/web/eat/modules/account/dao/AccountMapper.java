@@ -5,7 +5,9 @@ import java.util.List;
 import com.xinfang.web.eat.bean.BaseAccount;
 import com.xinfang.web.eat.bean.BaseUser;
 import com.xinfang.web.eat.bean.BaseUserAccount;
+import com.xinfang.web.eat.modules.account.entity.AccountCommonEntity;
 import com.xinfang.web.eat.modules.account.entity.AccountDetails;
+import com.xinfang.web.eat.modules.account.entity.PageNumEntity;
 
 /**
  * 
@@ -40,7 +42,7 @@ public interface AccountMapper {
 	 * @param baseUser
 	 * @return
 	 */
-	List<BaseAccount> selectAccounts(BaseUser baseUser);
+	List<AccountCommonEntity> selectAccounts(PageNumEntity pageNumEntity);
 	
 	/**
 	 * 卡内应有余额

@@ -75,18 +75,19 @@
 	
 	<!-- 用户明细 -->
 	<select id="selectAccounts" 
-		parameterType="com.xinfang.web.eat.bean.BaseUser"
-		resultType="com.xinfang.web.eat.bean.BaseAccount">
+		parameterType="com.xinfang.web.eat.modules.account.entity.PageNumEntity"
+		resultType="com.xinfang.web.eat.modules.account.entity.AccountCommonEntity">
 		SELECT
 			total_price		AS		totalPrice
-			,accout_type	AS		accountType
-			,create_time	AS		createTime
+			,accout_type	AS		accountTypeName
+			,date_format(create_time,'%Y-%c-%d %h:%i:%s')	AS		dateTime
 		FROM
 			xf_account
 		WHERE
-			xf_user_uuid	=	#{userUuid}
+			xf_user_uuid	=	#{baseUser.userUuid}
 		ORDER BY
 			create_time DESC
+		LIMIT #{startRn},#{pageSize}
 	</select>
 	
 	<!--  卡内余额 -->

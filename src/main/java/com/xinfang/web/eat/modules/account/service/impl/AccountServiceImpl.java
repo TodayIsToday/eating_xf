@@ -8,6 +8,7 @@ import org.joda.time.DateTime;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,6 +21,7 @@ import com.xinfang.web.eat.constant.Globals;
 import com.xinfang.web.eat.modules.account.dao.AccountMapper;
 import com.xinfang.web.eat.modules.account.entity.AccountCommonEntity;
 import com.xinfang.web.eat.modules.account.entity.AccountDetails;
+import com.xinfang.web.eat.modules.account.entity.PageNumEntity;
 import com.xinfang.web.eat.modules.account.service.AccountService;
 import com.xinfang.web.eat.modules.login.service.LoginService;
 
@@ -81,11 +83,11 @@ public class AccountServiceImpl implements AccountService{
 	}
 
 	@Override
-	public AccountCommonEntity commonAccount(BaseUser baseUser) {
-		AccountCommonEntity accountCommon = new AccountCommonEntity();
-		accountCommon.setBaseAccounts(accountMapper.selectAccounts(baseUser));
-		accountCommon.setAccountSum(accountMapper.accountSum(baseUser));
-		return accountCommon;
+	public List<AccountCommonEntity> commonAccount(BaseUser baseUser,Integer pageNum) {	
+		PageNumEntity pageNumEntity = new PageNumEntity();
+		pageNumEntity.setBaseUser(baseUser);
+		pageNumEntity.setPageNum(pageNum);
+		return accountMapper.selectAccounts(pageNumEntity);
 	}
 
 	@Override

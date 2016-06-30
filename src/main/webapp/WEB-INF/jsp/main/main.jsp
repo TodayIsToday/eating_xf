@@ -50,6 +50,9 @@
 				</s:form>
 			</s:if>
 		</s:iterator>
+<div>
+	<s:include value="/WEB-INF/jsp/account/account_common.jsp"/>
+</div>		
 	</div>
 </body>
 </html>
