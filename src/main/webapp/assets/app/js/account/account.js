@@ -3,7 +3,7 @@
  */
 ;(function() {
 	"use strict";
-	define([ 'jquery' ,'app/utils/serializeObject'], function($) {
+	define([ 'jquery' ,'app/utils/serializeObject','underscore'], function($,_) {
 
 		var UserAccount = $.UserAccount = {
 			/**
@@ -35,7 +35,15 @@
 						success : function( result ){
 							if(result.ajaxFlg === true){
 								var userUuid = jsonDate['baseUserAccount.userUuid'];
+									if(!!!userUuid){
+										alert('请选择充值用户！');
+										return ;
+									}
 								var payment = + $('input[name="baseUserAccount.totalAccount"]').val();
+									if(!!!payment){
+										alert('请选择充值金额！');
+										return ;
+									}
 								var payUser = "";
 								var bfAccount = + $('tbody').find('td').filter("[data-class="+userUuid+"]").text().trim();
 								$('tbody').find('td').filter("[data-class="+userUuid+"]").text( payment + bfAccount );
@@ -51,7 +59,8 @@
 					});
 				});
 				return this;
-			}
+			},
+			
 		};
 		
 		return UserAccount;

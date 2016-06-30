@@ -1,6 +1,9 @@
 package com.xinfang.web.eat.modules.login.action;
 
 
+import java.util.Date;
+
+import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -28,6 +31,8 @@ public class LoginAction extends BaseAction {
 	  ============================================*/
 	
 	private String userName, password;
+	public Date test;
+	public DateTime test2;
 	
 
 	/*-------------------------------------------
@@ -39,7 +44,6 @@ public class LoginAction extends BaseAction {
 	 * @return
 	 */
 	public String login(){
-		
 		if(null != getCurrentUser()){
 			return SUCCESS;
 		}

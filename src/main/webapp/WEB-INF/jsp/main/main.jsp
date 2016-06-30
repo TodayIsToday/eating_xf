@@ -39,6 +39,9 @@
 		<s:form namespace="/security" action="logout">
 			<input type="submit" class="btn btn-primary" value="注销" />
 		</s:form>
+		
+		<s:action name="common" namespace="/account" executeResult="true"></s:action>
+		
 		<s:iterator value="getCurrentUserRole()" var="item">
 			<s:if test="#item.roleCode == 'rc_000'">
 				<!-- 管理员画面 -->
@@ -47,9 +50,6 @@
 				</s:form>
 			</s:if>
 		</s:iterator>
-<div>
-	<s:action name="common" namespace="/account" executeResult="true"></s:action>
-</div>		
 	</div>
 </body>
 </html>
