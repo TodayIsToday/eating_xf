@@ -11,6 +11,7 @@ import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.json.annotations.JSON;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.xinfang.web.eat.bean.BaseAccount;
 import com.xinfang.web.eat.bean.BaseUser;
@@ -18,6 +19,7 @@ import com.xinfang.web.eat.bean.BaseUserAccount;
 import com.xinfang.web.eat.modules.account.entity.AccountDetails;
 import com.xinfang.web.eat.modules.account.entity.AccountCommonEntity;
 import com.xinfang.web.eat.modules.base.action.BaseAction;
+import com.xinfang.web.eat.modules.workFlow.service.WorkFlowService;
 import com.xinfang.web.eat.util.Tupian;
 
 
@@ -40,6 +42,10 @@ public class AccountAction extends BaseAction {
 	/*-------------------------------------------
 	  |    I N S T A N C E   V A R I A B L E S    |
 	  ============================================*/
+	
+	/*@Autowired
+	private WorkFlowService workFlowService;*/
+	
 	/**所有用户*/
 	public List<BaseUser> xfUserList = Collections.emptyList();
 	
@@ -76,7 +82,6 @@ public class AccountAction extends BaseAction {
 	            response.setContentType("image/png");
 	            //response.setContentType("multipart/form-data");
 	            out = response.getOutputStream();
-	            ImageIO.write(Tupian.creatImage(), "PNG", response.getOutputStream());
 	            out.flush();
 	        } catch (Exception e) {
 	            e.printStackTrace();
@@ -132,6 +137,15 @@ public class AccountAction extends BaseAction {
 		ajaxFlg = accountService.insertTotalAccount(baseUserAccount);
 		return SUCCESS;
 	}
+	
+	/**
+	 * 测试workFlow Action	
+	 */
+	/*public void testWorkFlowAction(){
+		// 部署一个流程
+		workFlowService.deploymentLocalProcess("");
+		
+	}*/
 	
 	/*-------------------------------------------
 	 |        G E T T E R && S E T T E R          |

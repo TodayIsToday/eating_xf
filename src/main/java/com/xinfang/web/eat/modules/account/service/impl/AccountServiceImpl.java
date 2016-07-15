@@ -8,7 +8,6 @@ import org.joda.time.DateTime;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,6 +26,7 @@ import com.xinfang.web.eat.modules.login.service.LoginService;
 
 @Service
 @Transactional
+//@CacheConfig
 public class AccountServiceImpl implements AccountService{
 
 	/*-------------------------------------------
@@ -112,6 +112,7 @@ public class AccountServiceImpl implements AccountService{
 			String userName = loginService.getUserByUserUuid(accountDetails.getUserUuid()).getUserName();
 			accountDetails.setUserName(userName);
 		}
+		System.out.println(System.currentTimeMillis());
 		return listDetails;
 	}
 

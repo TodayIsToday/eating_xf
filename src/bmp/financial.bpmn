@@ -1,0 +1,39 @@
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/processdef">
+<process id="process" isExecutable="true">
+<startEvent id="sid-4CFCC69D-176C-4D39-9EA8-3A89EC6E44FA"/>
+<userTask id="writeReportTask" name="Write monthly financial report"/>
+<sequenceFlow id="sid-099F4850-9C4D-4CBE-A1F3-78598F2517E8" sourceRef="sid-4CFCC69D-176C-4D39-9EA8-3A89EC6E44FA" targetRef="writeReportTask"/>
+<userTask id="verifyReportTask" name="Verify monthly financial report"/>
+<sequenceFlow id="sid-3FAE6FD4-8663-4A38-BA1C-7C384C37D86C" sourceRef="writeReportTask" targetRef="verifyReportTask"/>
+<endEvent id="sid-56EF9D8A-11A6-4CA0-965E-0B1C0A51227E"/>
+<sequenceFlow id="sid-2C850B2C-87CF-40EE-A7FC-2D0FE066AACD" sourceRef="verifyReportTask" targetRef="sid-56EF9D8A-11A6-4CA0-965E-0B1C0A51227E"/>
+</process>
+<bpmndi:BPMNDiagram id="BPMNDiagram_process">
+<bpmndi:BPMNPlane bpmnElement="process" id="BPMNPlane_process">
+<bpmndi:BPMNShape bpmnElement="sid-4CFCC69D-176C-4D39-9EA8-3A89EC6E44FA" id="BPMNShape_sid-4CFCC69D-176C-4D39-9EA8-3A89EC6E44FA">
+<omgdc:Bounds height="30.0" width="30.0" x="60.0" y="55.0"/>
+</bpmndi:BPMNShape>
+<bpmndi:BPMNShape bpmnElement="writeReportTask" id="BPMNShape_writeReportTask">
+<omgdc:Bounds height="80.0" width="100.0" x="210.0" y="30.0"/>
+</bpmndi:BPMNShape>
+<bpmndi:BPMNShape bpmnElement="verifyReportTask" id="BPMNShape_verifyReportTask">
+<omgdc:Bounds height="80.0" width="100.0" x="420.0" y="30.0"/>
+</bpmndi:BPMNShape>
+<bpmndi:BPMNShape bpmnElement="sid-56EF9D8A-11A6-4CA0-965E-0B1C0A51227E" id="BPMNShape_sid-56EF9D8A-11A6-4CA0-965E-0B1C0A51227E">
+<omgdc:Bounds height="28.0" width="28.0" x="673.5" y="56.0"/>
+</bpmndi:BPMNShape>
+<bpmndi:BPMNEdge bpmnElement="sid-3FAE6FD4-8663-4A38-BA1C-7C384C37D86C" id="BPMNEdge_sid-3FAE6FD4-8663-4A38-BA1C-7C384C37D86C">
+<omgdi:waypoint x="310.0" y="70.0"/>
+<omgdi:waypoint x="420.0" y="70.0"/>
+</bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge bpmnElement="sid-099F4850-9C4D-4CBE-A1F3-78598F2517E8" id="BPMNEdge_sid-099F4850-9C4D-4CBE-A1F3-78598F2517E8">
+<omgdi:waypoint x="90.0" y="70.0"/>
+<omgdi:waypoint x="210.0" y="70.0"/>
+</bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge bpmnElement="sid-2C850B2C-87CF-40EE-A7FC-2D0FE066AACD" id="BPMNEdge_sid-2C850B2C-87CF-40EE-A7FC-2D0FE066AACD">
+<omgdi:waypoint x="520.0" y="70.0"/>
+<omgdi:waypoint x="673.5" y="70.0"/>
+</bpmndi:BPMNEdge>
+</bpmndi:BPMNPlane>
+</bpmndi:BPMNDiagram>
+</definitions>

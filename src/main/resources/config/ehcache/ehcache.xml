@@ -4,19 +4,12 @@
 
 	<diskStore path="java.io.tmpdir" />
 
-	<cacheManagerPeerListenerFactory
-		class="net.sf.ehcache.distribution.RMICacheManagerPeerListenerFactory"
-		properties="hostName=localhost,port=40002,socketTimeoutMillis=120000" />
-
 	<cache name="defaultCacheDefine" 
 		maxElementsInMemory="100000"
 		eternal="false" 
 		overflowToDisk="true" 
 		timeToIdleSeconds="172800"
 		memoryStoreEvictionPolicy="LFU">
-		<cacheEventListenerFactory
-			class="net.sf.ehcache.distribution.RMICacheReplicatorFactory"
-			properties="replicateAsynchronously=false, replicatePuts=true, replicateUpdates=true, replicateUpdatesViaCopy=true, replicateRemovals=true" />
 	</cache>
 
 	<cache name="foreverCache" 
@@ -24,9 +17,6 @@
 		eternal="true"
 		overflowToDisk="true" 
 		memoryStoreEvictionPolicy="LFU">
-	<cacheEventListenerFactory
-			class="net.sf.ehcache.distribution.RMICacheReplicatorFactory"
-			properties="replicateAsynchronously=false, replicatePuts=true, replicateUpdates=true, replicateUpdatesViaCopy=true, replicateRemovals=true" />
 	</cache>
 	
 	<cache name="movieFindCache" 

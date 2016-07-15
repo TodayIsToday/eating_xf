@@ -33,6 +33,10 @@
 			</result>
 		</action>
 		
+		<action name="testWorkFlow" method="testWorkFlowAction">
+			
+		</action>
+		
 		<action name="tupian" method="tupian"></action>
 	</package>
 </struts>

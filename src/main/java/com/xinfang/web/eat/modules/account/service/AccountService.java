@@ -2,18 +2,20 @@ package com.xinfang.web.eat.modules.account.service;
 
 import java.util.List;
 
+import org.springframework.cache.annotation.Cacheable;
+
 import com.xinfang.web.eat.bean.BaseAccount;
 import com.xinfang.web.eat.bean.BaseUser;
 import com.xinfang.web.eat.bean.BaseUserAccount;
 import com.xinfang.web.eat.modules.account.entity.AccountCommonEntity;
 import com.xinfang.web.eat.modules.account.entity.AccountDetails;
-import com.xinfang.web.eat.modules.account.entity.PageNumEntity;
 
 /**
  * 
  * @author st && hk
  *
  */
+
 public interface AccountService {
 
 	/**
@@ -48,6 +50,7 @@ public interface AccountService {
 	 * @param loginName
 	 * @return
 	 */
+//	@Cacheable(key= "defaultCacheDefine", value="#loginName")
 	float selectpersonBalanceOfCard(String loginName );
 	
 	/**
@@ -55,6 +58,7 @@ public interface AccountService {
 	 * @param userUuid 
 	 * @return
 	 */
+	@Cacheable("defaultCacheDefine")
 	List<AccountDetails> selectBalanceOfCard();
 	
 	/**

@@ -33,10 +33,16 @@
 
 	<!-- Root Webapp -->
 	<import resource="classpath:config/spring/application-datasource.xml" />
+	
+	<!-- Eache config -->
+	<import resource="classpath:config/ehcache/application-ehcache.xml" />
 
 	<!-- Transaction -->
 	<bean id="transactionManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
+	
+	<!-- Activiti工作流 -->
+	<import resource="classpath:config/activiti/application-activiti-standalone-context.xml" />
 </beans>
