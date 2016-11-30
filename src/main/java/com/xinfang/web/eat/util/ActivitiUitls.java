@@ -1,7 +1,5 @@
 package com.xinfang.web.eat.util;
 
-import org.apache.commons.lang3.StringUtils;
-
 
 /**
  * activiti 学习类
@@ -15,7 +13,6 @@ public class ActivitiUitls {
 		
 		man.setAge("24");
 		System.out.println(man);
-		String test = "";
 		Integer.valueOf(null);
 	}
 }
