@@ -1,11 +1,7 @@
 package com.xinfang.web.eat.util;
 
-import org.activiti.engine.ProcessEngine;
-import org.activiti.engine.ProcessEngineConfiguration;
-import org.activiti.engine.RepositoryService;
-import org.activiti.engine.RuntimeService;
+import org.apache.commons.lang3.StringUtils;
 
-import oracle.net.aso.p;
 
 /**
  * activiti 学习类
@@ -14,20 +10,48 @@ import oracle.net.aso.p;
  */
 public class ActivitiUitls {
 	public static void main(String[] args) {
-		// Create activiti process engine
-		ProcessEngine processEngine = ProcessEngineConfiguration
-				.createStandaloneProcessEngineConfiguration()
-				.buildProcessEngine();
+		Man man = new Man("hk","23");
+		System.out.println(man);
 		
-		// Get activiti service
-		RepositoryService repositoryService = processEngine.getRepositoryService();
-		RuntimeService runtimeService = processEngine.getRuntimeService();
-		
-		// Deploy the process definition
-		repositoryService.createDeployment().addClasspathResource("config/activiti/test/VacationRequest.bpmn20.xml").deploy();
-		
-		// Start a prcess instance
-		//runtimeService.startProcessInstanceByKey("process");
-		
+		man.setAge("24");
+		System.out.println(man);
+		String test = "";
+		Integer.valueOf(null);
 	}
+}
+
+
+class Man{
+	private String name ;
+	private String age;
+	
+	
+	public Man() {
+		super();
+	}
+	public Man(String name, String age) {
+		super();
+		this.name = name;
+		this.age = age;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getAge() {
+		return age;
+	}
+	public void setAge(String age) {
+		this.age = age;
+	}
+	@Override
+	public String toString() {
+		return "Man [name=" + name + ", age=" + age + "]";
+	}
+	
+	
+	
+	
 }

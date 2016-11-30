@@ -50,7 +50,6 @@ public interface AccountService {
 	 * @param loginName
 	 * @return
 	 */
-//	@Cacheable(key= "defaultCacheDefine", value="#loginName")
 	float selectpersonBalanceOfCard(String loginName );
 	
 	/**
